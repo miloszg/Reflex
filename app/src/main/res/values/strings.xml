@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Re-flex</string>
+    <string name="go">GO!</string>
+    <string name="textview">TextView</string>
+</resources>
