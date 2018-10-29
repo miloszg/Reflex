@@ -20,7 +20,8 @@
         <activity android:name=".ustawienia" />
         <activity android:name=".zasady_gry" />
         <activity android:name=".Play" />
-        <activity android:name=".Wynik"></activity>
+        <activity android:name=".Wynik" />
+        <activity android:name=".Gyro"></activity>
     </application>
 
 </manifest>
