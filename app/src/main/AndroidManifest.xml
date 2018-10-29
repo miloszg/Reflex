@@ -21,7 +21,8 @@
         <activity android:name=".zasady_gry" />
         <activity android:name=".Play" />
         <activity android:name=".Wynik" />
-        <activity android:name=".Gyro"></activity>
+        <activity android:name=".Gyro" />
+        <activity android:name=".Voice"></activity>
     </application>
 
 </manifest>
