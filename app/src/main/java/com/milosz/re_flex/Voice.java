@@ -111,6 +111,9 @@ public class Voice extends AppCompatActivity {
             if(command.indexOf("your name")!=-1) {
                 speak("Nice mordeczko");
             }
+            if(command.indexOf("time")!=-1){
+                speak("o kurde");
+            }
         }
 
 
