@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.milosz.re_flex">
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
     <application
         android:allowBackup="true"
@@ -22,6 +23,10 @@
         <activity android:name=".Play" />
         <activity android:name=".Wynik" />
         <activity android:name=".Gyro" />
+        <activity
+            android:name=".Voice"
+            android:label="@string/title_activity_voice"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
