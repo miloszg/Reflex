@@ -22,7 +22,6 @@
         <activity android:name=".Play" />
         <activity android:name=".Wynik" />
         <activity android:name=".Gyro" />
-        <activity android:name=".Voice"></activity>
     </application>
 
 </manifest>
