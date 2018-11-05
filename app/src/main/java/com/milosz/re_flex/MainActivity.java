@@ -33,11 +33,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent1);
                 break;
             case R.id.button1:
-                Intent intent2 = new Intent(this, Voice.class);
+                Intent intent2 = new Intent(this, zasady_gry.class);
                 startActivity(intent2);
                 break;
             case R.id.button2:
-                Intent intent3 = new Intent(this, ustawienia.class);
+                Intent intent3 = new Intent(this, Voice.class);
                 startActivity(intent3);
                 break;
             case R.id.button3:
