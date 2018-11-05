@@ -1,9 +1,11 @@
 package com.milosz.re_flex;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,9 +30,13 @@ public class Wynik extends AppCompatActivity {
         Play p=new Play();
         gratulacje.setText("Gratulacje zdobyłeś " +p.getPunkty()+ " punktów");
 
+        InputMethodManager mgr= (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        mgr.hideSoftInputFromWindow(edit.getWindowToken(),0);
+
     }
     public void onClick(View view)
     {
+
         nazwa=edit.getText().toString();
         Intent intent5 = new Intent(this, MainActivity.class);
         startActivity(intent5);
