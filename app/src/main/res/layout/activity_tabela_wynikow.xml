@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context=".tabela_wynikow">
 
     <ListView
         android:id="@+id/lista"
         android:layout_width="387dp"
         android:layout_height="508dp"
+        android:background="@android:color/darker_gray"
+        android:headerDividersEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

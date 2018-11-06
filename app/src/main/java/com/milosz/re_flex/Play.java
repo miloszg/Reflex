@@ -52,7 +52,7 @@ public class Play extends AppCompatActivity {
     public void start()
     {
         odliczanie.setVisibility(View.VISIBLE);
-        new CountDownTimer(3100,1000) {
+        new CountDownTimer(4100,1000) {
             @Override
             public void onTick(long l) {
                 odliczanie.setText(String.valueOf(l/1000));
@@ -117,7 +117,7 @@ public class Play extends AppCompatActivity {
             b.setEnabled(true);
         }
         przycisk0.setEnabled(true);
-        new CountDownTimer(5100,1000){
+        new CountDownTimer(10100,1000){
 
             @Override
             public void onTick(long l) {
