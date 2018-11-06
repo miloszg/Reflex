@@ -35,24 +35,6 @@
         app:layout_gravity="fill"
         tools:text="3" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="147dp"
-        android:layout_marginLeft="147dp"
-        android:layout_marginTop="166dp"
-        android:layout_marginEnd="149dp"
-        android:layout_marginRight="149dp"
-        android:layout_marginBottom="297dp"
-        android:onClick="start"
-        android:text="Button"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
@@ -112,7 +94,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:background="@android:color/holo_blue_light"
+            android:background="@android:color/holo_orange_dark"
             android:padding="10dp"
             android:text="0/0"
             android:textSize="40sp"

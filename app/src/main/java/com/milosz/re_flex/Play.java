@@ -26,10 +26,7 @@ public class Play extends AppCompatActivity {
     TextView wynikowy;
     TextView dzialanie;
     TextView punkty;
-    Button przycisk0;
-    Button przycisk1;
-    Button przycisk2;
-    Button przycisk3;
+    Button przycisk0 ,przycisk1, przycisk2, przycisk3;
     Button zagrajznowu;
     Button koniec;
     ConstraintLayout layout;
@@ -45,15 +42,15 @@ public class Play extends AppCompatActivity {
     char kwadrat='\u25A1';
     char trojkat='\u25B3';
 
-    Button glowny;
+
     private static int liczbaPunktow=0;
     public int getPunkty() {
         return this.liczbaPunktow;
     }
     int liczbaPytan=0;
-    public void start(View view)
+
+    public void start()
     {
-        glowny.setVisibility(View.INVISIBLE);
         odliczanie.setVisibility(View.VISIBLE);
         new CountDownTimer(3100,1000) {
             @Override
@@ -176,7 +173,6 @@ public class Play extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
-        glowny=findViewById(R.id.button5);
         dzialanie=findViewById(R.id.dzialanie);
         przycisk0=findViewById(R.id.button6);
         przycisk1=findViewById(R.id.button7);
@@ -188,7 +184,6 @@ public class Play extends AppCompatActivity {
         czas = findViewById(R.id.czas);
         layout=findViewById(R.id.layout);
         layout.setVisibility(View.INVISIBLE);
-        glowny.setVisibility(View.VISIBLE);
         grid=findViewById(R.id.gridLayout2);
         przyciski.add(przycisk0);
         przyciski.add(przycisk1);
@@ -196,6 +191,7 @@ public class Play extends AppCompatActivity {
         przyciski.add(przycisk3);
         odliczanie=findViewById(R.id.odliczanie);
         koniec=findViewById(R.id.koniec);
+        start();
 
     }
 }
