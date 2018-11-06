@@ -21,16 +21,11 @@ public class Play extends AppCompatActivity {
     String[] kolorki={"CZERWONY", "NIEBIESKI", "ZIELONY", "FIOLETOWY"};
     String[] ksztalciki={"ROMB","KOLKO", "KWADRAT", "TROJKAT"};
     String[] puste={"","","",""};
-    TextView odliczanie;
-    TextView czas;
-    TextView wynikowy;
-    TextView dzialanie;
-    TextView punkty;
+    TextView odliczanie,czas, wynikowy, dzialanie, punkty;
     Button przycisk0 ,przycisk1, przycisk2, przycisk3;
     Button zagrajznowu;
     Button koniec;
     ConstraintLayout layout;
-    GridLayout grid;
     Random rand=new Random();
     int pozycjaDobrejOdpowiedzi;
     ArrayList<Integer> odpowiedzi = new ArrayList<>();
@@ -184,7 +179,7 @@ public class Play extends AppCompatActivity {
         czas = findViewById(R.id.czas);
         layout=findViewById(R.id.layout);
         layout.setVisibility(View.INVISIBLE);
-        grid=findViewById(R.id.gridLayout2);
+
         przyciski.add(przycisk0);
         przyciski.add(przycisk1);
         przyciski.add(przycisk2);
