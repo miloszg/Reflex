@@ -9,71 +9,21 @@
 
     <Button
         android:id="@+id/button0"
-        android:layout_width="208dp"
-        android:layout_height="55dp"
+        android:layout_width="250dp"
+        android:layout_height="135dp"
         android:layout_marginStart="88dp"
         android:layout_marginLeft="88dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="27dp"
         android:layout_marginEnd="88dp"
         android:layout_marginRight="88dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="88dp"
         android:onClick="onClick"
         android:text="Graj"
-        app:layout_constraintBottom_toTopOf="@+id/button1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="208dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginRight="88dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="onClick"
-        android:text="Jak grać"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button0" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="208dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginRight="88dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="onClick"
-        android:text="Ustawienia"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="208dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginRight="88dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="onClick"
-        android:text="Tabela wyników"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button1" />
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <Button
         android:id="@+id/button4"
@@ -81,7 +31,6 @@
         android:layout_height="55dp"
         android:layout_marginStart="88dp"
         android:layout_marginLeft="88dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="88dp"
         android:layout_marginRight="88dp"
         android:layout_marginBottom="32dp"
@@ -89,17 +38,17 @@
         android:text="Wyjdz z gry"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="157dp"
-        android:layout_marginBottom="9dp"
+        android:layout_width="394dp"
+        android:layout_height="201dp"
+        android:layout_marginBottom="34dp"
         app:layout_constraintBottom_toTopOf="@+id/button0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/reflex" />
 
 </android.support.constraint.ConstraintLayout>

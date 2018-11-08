@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Zasady" android:id="@+id/zasady"/>
+    <item android:title="Ustawienia" android:id="@+id/ustawienia"/>
+    <item android:title="Tabela" android:id="@+id/tabela"/>
+</menu>
