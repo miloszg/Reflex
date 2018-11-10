@@ -1,6 +1,8 @@
 package com.milosz.re_flex;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,10 +16,10 @@ import android.widget.TextView;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Random;
 
 public class Play extends AppCompatActivity {
-
     String[] kolorki={"CZERWONY", "NIEBIESKI", "ZIELONY", "FIOLETOWY"};
     String[] ksztalciki={"ROMB","KOLKO", "KWADRAT", "TROJKAT"};
     String[] puste={"","","",""};
@@ -32,13 +34,12 @@ public class Play extends AppCompatActivity {
     ArrayList<Button> przyciski = new ArrayList<>();
     ArrayList<String> kolory = new ArrayList<>();
     ArrayList<Character> ksztalty = new ArrayList<>();
-    char romb='\u25B1';
-    char kolko='\u25EF';
-    char kwadrat='\u25A1';
-    char trojkat='\u25B3';
 
 
-    private static int liczbaPunktow=0;
+    static ArrayList<String> liczba_punktow=new ArrayList<>();
+
+
+    public int liczbaPunktow;
     public int getPunkty() {
         return this.liczbaPunktow;
     }
@@ -87,6 +88,10 @@ public class Play extends AppCompatActivity {
     }
     public void generowaniePytanKszalt(){
         // 1- CZER, 2-NIEB, 3-ZIEL, 4-FIOLET
+        char romb='\u25B1';
+        char kolko='\u25EF';
+        char kwadrat='\u25A1';
+        char trojkat='\u25B3';
         pozycjaDobrejOdpowiedzi=rand.nextInt(4);
         ksztalty.clear();
         ksztalty.add(romb);
@@ -161,8 +166,10 @@ public class Play extends AppCompatActivity {
     }
     public void koniec(View view)
     {
+        liczba_punktow.add(String.valueOf(liczbaPunktow));
         Intent intent = new Intent(this, Wynik.class);
         startActivity(intent);
+
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,6 +193,8 @@ public class Play extends AppCompatActivity {
         przyciski.add(przycisk3);
         odliczanie=findViewById(R.id.odliczanie);
         koniec=findViewById(R.id.koniec);
+
+
         start();
 
     }

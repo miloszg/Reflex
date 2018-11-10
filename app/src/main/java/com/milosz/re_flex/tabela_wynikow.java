@@ -1,33 +1,45 @@
 package com.milosz.re_flex;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class tabela_wynikow extends AppCompatActivity {
-
-    String nazwa;
+    SharedPreferences sharedPreferences;
+    static ArrayAdapter<String> arrayAdapter;
     int liczbaPunktow;
-    ListView myListView;
-    public void generate(){
-        ArrayList<String> lista = new ArrayList<>();
-        String s=nazwa+" zdobył: "+String.valueOf(liczbaPunktow)+" Punktów";
-        lista.add(s);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lista);
-        myListView.setAdapter(arrayAdapter);
-    }
+    static ListView myListView;
+    ArrayList<String> wynik_listy=new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabela_wynikow);
-        myListView=findViewById(R.id.lista);
-        Play p=new Play();
-        liczbaPunktow=p.getPunkty();
-        Wynik w=new Wynik();
-        nazwa=w.getNazwa();
-        generate();
+        zrobListe();
+
     }
+
+    public void zrobListe() {
+        sharedPreferences=getApplicationContext().getSharedPreferences("com.milosz.re_flex",Context.MODE_PRIVATE);
+        myListView=findViewById(R.id.lista);
+        HashSet<String> set=(HashSet<String>) sharedPreferences.getStringSet("lista_nazw",null);
+        if(set!=null){
+            Wynik.lista_nazw=new ArrayList(set);
+        }
+        arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,Wynik.lista_nazw);
+        myListView.setAdapter(arrayAdapter);
+    }
+
+
 }
