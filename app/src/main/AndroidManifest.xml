@@ -22,7 +22,7 @@
         <activity android:name=".zasady_gry" />
         <activity android:name=".Play" />
         <activity android:name=".Wynik" />
-        <activity android:name=".Gyro" />
+        <activity android:name=".Gyro" android:screenOrientation="portrait"/>
         <activity
             android:name=".Voice"
             android:label="@string/title_activity_voice"

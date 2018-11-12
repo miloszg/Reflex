@@ -133,8 +133,6 @@ public class Voice extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     private void speak(String message) {
