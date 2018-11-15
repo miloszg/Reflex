@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    SharedPreferences sharedPreferences;
+    //SharedPreferences sharedPreferences;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater=getMenuInflater();

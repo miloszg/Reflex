@@ -25,25 +25,22 @@ public class Play extends AppCompatActivity {
     String[] puste={"","","",""};
     TextView odliczanie,czas, wynikowy, dzialanie, punkty;
     Button przycisk0 ,przycisk1, przycisk2, przycisk3;
-    Button zagrajznowu;
-    Button koniec;
+    Button zagrajznowu,koniec;
     ConstraintLayout layout;
     Random rand=new Random();
-    int pozycjaDobrejOdpowiedzi;
+
     ArrayList<Integer> odpowiedzi = new ArrayList<>();
     ArrayList<Button> przyciski = new ArrayList<>();
     ArrayList<String> kolory = new ArrayList<>();
     ArrayList<Character> ksztalty = new ArrayList<>();
-
-
     static ArrayList<String> liczba_punktow=new ArrayList<>();
-
 
     public int liczbaPunktow;
     public int getPunkty() {
         return this.liczbaPunktow;
     }
     int liczbaPytan=0;
+    int pozycjaDobrejOdpowiedzi;
 
     public void start()
     {
@@ -186,16 +183,12 @@ public class Play extends AppCompatActivity {
         czas = findViewById(R.id.czas);
         layout=findViewById(R.id.layout);
         layout.setVisibility(View.INVISIBLE);
-
         przyciski.add(przycisk0);
         przyciski.add(przycisk1);
         przyciski.add(przycisk2);
         przyciski.add(przycisk3);
         odliczanie=findViewById(R.id.odliczanie);
         koniec=findViewById(R.id.koniec);
-
-
         start();
-
     }
 }

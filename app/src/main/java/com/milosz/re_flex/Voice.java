@@ -113,7 +113,7 @@ public class Voice extends AppCompatActivity {
             }
             if(command.indexOf("time")!=-1){
                 speak("o kurde");
-                speak("o lol")
+                speak("o lol");
             }
         }
 
