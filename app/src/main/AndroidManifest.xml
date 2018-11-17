@@ -32,7 +32,6 @@
             android:name=".Voice"
             android:label="@string/title_activity_voice"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TestGyro"></activity>
     </application>
 
 </manifest>

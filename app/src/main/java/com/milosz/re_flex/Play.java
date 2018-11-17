@@ -1,22 +1,16 @@
 package com.milosz.re_flex;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayout;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Random;
 
 public class Play extends AppCompatActivity {
@@ -172,13 +166,13 @@ public class Play extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
-        dzialanie=findViewById(R.id.dzialanie);
+        dzialanie=findViewById(R.id.polecenie);
         przycisk0=findViewById(R.id.button6);
         przycisk1=findViewById(R.id.button7);
         przycisk2=findViewById(R.id.button8);
         przycisk3=findViewById(R.id.button9);
         wynikowy=findViewById(R.id.wynikowy);
-        punkty=findViewById(R.id.punkty);
+        punkty=findViewById(R.id.wynik);
         zagrajznowu = findViewById(R.id.znowu);
         czas = findViewById(R.id.czas);
         layout=findViewById(R.id.layout);

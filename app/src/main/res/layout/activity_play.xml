@@ -89,7 +89,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/punkty"
+            android:id="@+id/wynik"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -103,14 +103,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/dzialanie"
+            android:id="@+id/polecenie"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             android:padding="15dp"
             android:text="31 +6"
             android:textSize="30sp"
-            app:layout_constraintEnd_toStartOf="@+id/punkty"
+            app:layout_constraintEnd_toStartOf="@+id/wynik"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/czas"
             app:layout_constraintTop_toTopOf="parent" />
