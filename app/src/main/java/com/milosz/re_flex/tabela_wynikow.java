@@ -37,7 +37,7 @@ public class tabela_wynikow extends AppCompatActivity {
         if(set!=null){
             Wynik.lista_nazw=new ArrayList(set);
         }
-        arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,Wynik.lista_nazw);
+        arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,Wynik.lista_nazw);
         myListView.setAdapter(arrayAdapter);
     }
 
