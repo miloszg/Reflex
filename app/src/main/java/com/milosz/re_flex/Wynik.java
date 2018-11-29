@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.milosz.re_flex.Play;
 
 import java.util.ArrayList;
@@ -18,7 +20,9 @@ import java.util.HashSet;
 
 public class Wynik extends AppCompatActivity {
 
-    public String nazwa;
+    DataBase db;
+
+
     Button button;
     EditText edit;
     TextView gratulacje;
@@ -29,6 +33,9 @@ public class Wynik extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wynik);
+
+        db=new DataBase(this);
+
         button=findViewById(R.id.buttonWynikowy);
         edit=findViewById(R.id.editText);
         gratulacje=findViewById(R.id.gratulacje);
@@ -38,8 +45,17 @@ public class Wynik extends AppCompatActivity {
     }
     public void onClick(View view)
     {
-        nazwa=edit.getText().toString();
-        lista_nazw.add(nazwa);
+        String name=edit.getText().toString();
+
+        //DB
+        if(!name.equals("") && db.insertData(name)){
+            Toast.makeText(this, "Data added", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Data not added", Toast.LENGTH_SHORT).show();
+        }
+        db.viewData();
+
+        lista_nazw.add(name);
         Intent intent5 = new Intent(this, MainActivity.class);
         startActivity(intent5);
 
