@@ -23,8 +23,6 @@ public class tabela_wynikow extends AppCompatActivity {
     int liczbaPunktow;
     int dlugosc;
     static ListView myListView;
-    ArrayList<String> wynik_listy=new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

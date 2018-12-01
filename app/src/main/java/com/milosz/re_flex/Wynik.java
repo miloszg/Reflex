@@ -3,8 +3,10 @@ package com.milosz.re_flex;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -22,7 +24,7 @@ public class Wynik extends AppCompatActivity {
 
     DataBase db;
 
-
+    int wynik=3;
     Button button;
     EditText edit;
     TextView gratulacje;
@@ -48,8 +50,15 @@ public class Wynik extends AppCompatActivity {
         String name=edit.getText().toString();
 
         //DB
-        if(!name.equals("") && db.insertData(name)){
+        if(!name.equals("") && db.insertDataName(name) && db.insertDataPoints(wynik)){
             Toast.makeText(this, "Data added", Toast.LENGTH_SHORT).show();
+            Cursor c=db.viewData();
+            int nameIndex = c.getColumnIndex("NAME");
+            int pointsIndex = c.getColumnIndex("POINTS");
+            while (c.moveToNext()){
+                Log.i("imie kupa", c.getString(nameIndex)); //1 to name
+                Log.i("pkt kupa", String.valueOf(c.getInt(pointsIndex))); //2 to name
+            }
         } else {
             Toast.makeText(this, "Data not added", Toast.LENGTH_SHORT).show();
         }

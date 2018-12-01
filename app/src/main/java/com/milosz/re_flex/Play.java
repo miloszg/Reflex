@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Play extends AppCompatActivity {
+    DataBase db;
     String[] kolorki={"CZERWONY", "NIEBIESKI", "ZIELONY", "FIOLETOWY"};
     String[] ksztalciki={"ROMB","KOLKO", "KWADRAT", "TROJKAT"};
     String[] puste={"","","",""};
@@ -158,6 +159,7 @@ public class Play extends AppCompatActivity {
     public void koniec(View view)
     {
         liczba_punktow.add(String.valueOf(liczbaPunktow));
+       // db.insertDataPoints(liczbaPunktow);
         Intent intent = new Intent(this, Wynik.class);
         startActivity(intent);
 
