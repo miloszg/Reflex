@@ -7,16 +7,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DataBase extends SQLiteOpenHelper {
-//lol
+
         private static final String DB_NAME="Users.db";
         private static final String DB_TABLE="User_Table";
 
         private static final String ID="ID";
         private static final String NAME="NAME";
-        private static final String POINTS="POINTS";
+        private static final String POINTS="points";
 
         private static final String CREATE_TABLE="CREATE TABLE "+DB_TABLE+" ("+ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                NAME+" TEXT, "+ POINTS +" INTEGER )";
+                NAME+" TEXT, "+ POINTS +" NUM " + ")";
 
         public DataBase(Context context){
             super(context,DB_NAME,null,1);
@@ -36,18 +36,15 @@ public class DataBase extends SQLiteOpenHelper {
             SQLiteDatabase db=this.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
             contentValues.put(NAME,name);
-            //long result=db.insert(DB_TABLE,null,contentValues);
-            db.insert(DB_TABLE,null,contentValues);
-            return true;
-//            db.execSQL("INSERT INTO " + DB_TABLE+"(NAME, POINTS) VALUES (name, points);");
-//            return true;
+            long result=db.insert(DB_TABLE,null,contentValues);
+            return result!=-1;
         }
-        public boolean insertDataPoints(int punkty){
+        public boolean insertDataPoints(int points){
             SQLiteDatabase db=this.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
-            contentValues.put(POINTS,punkty);
-            //long result= db.insert(DB_TABLE,null,contentValues);
-            db.insert(DB_TABLE,null,contentValues);
+            contentValues.put(POINTS,points);
+            db.insert(DB_TABLE, null, contentValues);
+            //long result = db.insert(DB_TABLE, null, contentValues);
             return true;
         }
         public Cursor viewData(){

@@ -30,7 +30,7 @@ public class Wynik extends AppCompatActivity {
     TextView gratulacje;
     static ArrayList<String> lista_nazw=new ArrayList<>();
 
-
+    int liczba_punktow=Integer.valueOf(Play.liczba_punktow.get(Play.liczba_punktow.size()-1));
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,22 +42,22 @@ public class Wynik extends AppCompatActivity {
         edit=findViewById(R.id.editText);
         gratulacje=findViewById(R.id.gratulacje);
         Play p=new Play();
-        gratulacje.setText("Gratulacje zdobyłeś " +Play.liczba_punktow.get(Play.liczba_punktow.size()-1)+ " punktów");
+        gratulacje.setText("Gratulacje zdobyłeś " +liczba_punktow+ " punktów");
 
     }
     public void onClick(View view)
     {
         String name=edit.getText().toString();
-
+        Play p=new Play();
         //DB
-        if(!name.equals("") && db.insertDataName(name) && db.insertDataPoints(wynik)){
+        if(!name.equals("") && db.insertDataName(name) && db.insertDataPoints(3)){
             Toast.makeText(this, "Data added", Toast.LENGTH_SHORT).show();
             Cursor c=db.viewData();
-            int nameIndex = c.getColumnIndex("NAME");
-            int pointsIndex = c.getColumnIndex("POINTS");
+            int nameIndex=c.getColumnIndex("NAME");
+            int pointsIndex=c.getColumnIndex("points");
             while (c.moveToNext()){
                 Log.i("imie kupa", c.getString(nameIndex)); //1 to name
-                Log.i("pkt kupa", String.valueOf(c.getInt(pointsIndex))); //2 to name
+                Log.i("pkt kupa", String.valueOf(c.getInt(1))); //2 to name
             }
         } else {
             Toast.makeText(this, "Data not added", Toast.LENGTH_SHORT).show();

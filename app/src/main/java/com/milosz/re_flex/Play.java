@@ -30,10 +30,7 @@ public class Play extends AppCompatActivity {
     ArrayList<Character> ksztalty = new ArrayList<>();
     static ArrayList<String> liczba_punktow=new ArrayList<>();
 
-    public int liczbaPunktow;
-    public int getPunkty() {
-        return this.liczbaPunktow;
-    }
+    static public int liczbaPunktow;
     int liczbaPytan=0;
     int pozycjaDobrejOdpowiedzi;
 
@@ -159,7 +156,6 @@ public class Play extends AppCompatActivity {
     public void koniec(View view)
     {
         liczba_punktow.add(String.valueOf(liczbaPunktow));
-       // db.insertDataPoints(liczbaPunktow);
         Intent intent = new Intent(this, Wynik.class);
         startActivity(intent);
 

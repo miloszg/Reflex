@@ -33,14 +33,6 @@ public class tabela_wynikow extends AppCompatActivity {
     }
 
     public void zrobListe() {
-        String[] titleArr = { "Name", "Sex", "Age", "Location","Email"};
-        String[] descArr = { "Jerry", "Male", "43", "Singapore", "webmaster@dev2qa.com" };
-//        sharedPreferences=getApplicationContext().getSharedPreferences("com.milosz.re_flex",Context.MODE_PRIVATE);
-//
-//        HashSet<String> set=(HashSet<String>) sharedPreferences.getStringSet("lista_nazw",null);
-//        if(set!=null){
-//            Wynik.lista_nazw=new ArrayList(set);
-//        }
         myListView=findViewById(R.id.lista);
         dlugosc=Wynik.lista_nazw.size();
         ArrayList<Map<String,Object>> itemDataList = new ArrayList<Map<String,Object>>();
@@ -54,9 +46,6 @@ public class tabela_wynikow extends AppCompatActivity {
 
         SimpleAdapter simpleAdapter = new SimpleAdapter(this,itemDataList,android.R.layout.simple_list_item_2,
                 new String[]{"nazwa","punkty"},new int[]{android.R.id.text1,android.R.id.text2});
-
-
-       //arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,Wynik.lista_nazw);
         myListView.setAdapter(simpleAdapter);
     }
 

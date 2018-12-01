@@ -17,7 +17,7 @@ public class TestTabeliSQL extends AppCompatActivity {
     DataBase db;
     ListView listView;
     ArrayList<String> name;
-    ArrayList<String> points;
+    ArrayList<Integer> points;
     ArrayAdapter adapter;
     int dlugosc;
     @Override
@@ -27,29 +27,21 @@ public class TestTabeliSQL extends AppCompatActivity {
 
         db=new DataBase(this);
         name=new ArrayList<>();
-        points=new ArrayList<>();
+        points= new ArrayList<Integer>();
         listView=findViewById(R.id.lista);
         zobaczDane();
-
     }
 
     private void zobaczDane() {
         Cursor c=db.viewData();
         int nameIndex=c.getColumnIndex("NAME");
-        int pointsIndex=c.getColumnIndex("POINTS");
         if(c.getCount()==0){
             Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
         }else {
             while (c.moveToNext()){
                 name.add(c.getString(nameIndex)); //1 to name
-                points.add(String.valueOf(c.getInt(pointsIndex))); //2 to name
+                points.add(c.getInt(1)); //2 to name
             }
-//            c.moveToFirst();
-//            while (c != null) {
-//                name.add(c.getString(1)); //1 to name
-//                points.add(String.valueOf(c.getInt(2))); //2 to name
-//                c.moveToNext();
-//            }
 
             dlugosc=name.size();
             ArrayList<Map<String,Object>> itemDataList = new ArrayList<Map<String,Object>>();
