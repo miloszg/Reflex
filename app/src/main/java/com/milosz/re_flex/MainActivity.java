@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          super.onOptionsItemSelected(item);
         switch (item.getItemId()){
             case R.id.zasady:
-                Intent intent7 = new Intent(this, Fakty.class);
+                Intent intent7 = new Intent(this, Klikanie.class);
                 startActivity(intent7);
                 return true;
             case R.id.ustawienia:
