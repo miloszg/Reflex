@@ -48,21 +48,20 @@ public class Wynik extends AppCompatActivity {
     public void onClick(View view)
     {
         String name=edit.getText().toString();
-        Play p=new Play();
         //DB
-        if(!name.equals("") && db.insertDataName(name) && db.insertDataPoints(3)){
-            Toast.makeText(this, "Data added", Toast.LENGTH_SHORT).show();
-            Cursor c=db.viewData();
-            int nameIndex=c.getColumnIndex("NAME");
-            int pointsIndex=c.getColumnIndex("points");
-            while (c.moveToNext()){
-                Log.i("imie kupa", c.getString(nameIndex)); //1 to name
-                Log.i("pkt kupa", String.valueOf(c.getInt(1))); //2 to name
-            }
-        } else {
-            Toast.makeText(this, "Data not added", Toast.LENGTH_SHORT).show();
-        }
-        db.viewData();
+//        if(!name.equals("") && db.insertDataName(name)){
+//            Toast.makeText(this, "Data added", Toast.LENGTH_SHORT).show();
+//            Cursor c=db.viewData();
+//            int nameIndex=c.getColumnIndex("NAME");
+//            //int pointsIndex=c.getColumnIndex("points");
+//            while (c.moveToNext()){
+//                Log.i("imie kupa", c.getString(nameIndex)); //1 to name
+//               // Log.i("pkt kupa", c.getString(1)); //2 to name
+//            }
+//        } else {
+//            Toast.makeText(this, "Data not added", Toast.LENGTH_SHORT).show();
+//        }
+//        db.viewData();
 
         lista_nazw.add(name);
         Intent intent5 = new Intent(this, MainActivity.class);

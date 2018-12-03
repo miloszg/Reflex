@@ -28,12 +28,8 @@
         <activity
             android:name=".Gyro"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".Voice"
-            android:label="@string/title_activity_voice"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Fakty" />
-        <activity android:name=".TestTabeliSQL"></activity>
+        <activity android:name=".TestTabeliSQL" />
     </application>
 
 </manifest>

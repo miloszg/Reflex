@@ -2,6 +2,7 @@ package com.milosz.re_flex;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,18 +12,21 @@ import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class tabela_wynikow extends AppCompatActivity {
 
-    SharedPreferences sharedPreferences;
-    static ArrayAdapter<String> arrayAdapter;
-    int liczbaPunktow;
     int dlugosc;
-    static ListView myListView;
+    ListView myListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,8 @@ public class tabela_wynikow extends AppCompatActivity {
                 new String[]{"nazwa","punkty"},new int[]{android.R.id.text1,android.R.id.text2});
         myListView.setAdapter(simpleAdapter);
     }
+
+
 
 
 }

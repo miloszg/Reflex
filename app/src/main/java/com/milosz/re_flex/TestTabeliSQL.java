@@ -17,7 +17,7 @@ public class TestTabeliSQL extends AppCompatActivity {
     DataBase db;
     ListView listView;
     ArrayList<String> name;
-    ArrayList<Integer> points;
+    ArrayList<String> points;
     ArrayAdapter adapter;
     int dlugosc;
     @Override
@@ -27,7 +27,7 @@ public class TestTabeliSQL extends AppCompatActivity {
 
         db=new DataBase(this);
         name=new ArrayList<>();
-        points= new ArrayList<Integer>();
+        points= new ArrayList<>();
         listView=findViewById(R.id.lista);
         zobaczDane();
     }
@@ -40,7 +40,7 @@ public class TestTabeliSQL extends AppCompatActivity {
         }else {
             while (c.moveToNext()){
                 name.add(c.getString(nameIndex)); //1 to name
-                points.add(c.getInt(1)); //2 to name
+               // points.add(c.getString(1)); //2 to name
             }
 
             dlugosc=name.size();
@@ -49,7 +49,7 @@ public class TestTabeliSQL extends AppCompatActivity {
             for(int i =0; i < dlugosc; i++) {
                 Map<String,Object> listItemMap = new HashMap<String,Object>();
                 listItemMap.put("nazwa", name.get(i));
-                listItemMap.put("punkty", points.get(i));
+                listItemMap.put("punkty", Play.liczba_punktow.get(i)); //points.get(i)
                 itemDataList.add(listItemMap);
             }
 

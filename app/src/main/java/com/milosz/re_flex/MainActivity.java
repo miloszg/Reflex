@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    //SharedPreferences sharedPreferences;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater=getMenuInflater();
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          super.onOptionsItemSelected(item);
         switch (item.getItemId()){
             case R.id.zasady:
-                Intent intent7 = new Intent(this, TestTabeliSQL.class);
+                Intent intent7 = new Intent(this, Fakty.class);
                 startActivity(intent7);
                 return true;
             case R.id.ustawienia:
