@@ -30,14 +30,9 @@ public class Play extends AppCompatActivity {
     ArrayList<String> kolory = new ArrayList<>();
     ArrayList<Character> ksztalty = new ArrayList<>();
 
-    int liczbaPytan=0;
+    int liczbaPytan=rand.nextInt(3);
     int pozycjaDobrejOdpowiedzi;
 
-    public void start()
-    {
-        zagrajPonownie(findViewById(R.id.znowu));
-        layout.setVisibility(View.VISIBLE);
-    }
     public void generowaniePytanMatma(){
         int a=rand.nextInt(11);
         int b=rand.nextInt(11);
@@ -80,8 +75,6 @@ public class Play extends AppCompatActivity {
     }
     public void zagrajPonownie(View view){
 
-        liczbaPytan=0;
-        czas.setText("30s");
         if(liczbaPytan%3==0)
             kolejnePytanie(kolory);
         else if(liczbaPytan%3==1)
@@ -122,13 +115,6 @@ public class Play extends AppCompatActivity {
         else{
             wynikowy.setText("Ehhh...");
         }
-        liczbaPytan++;
-        if(liczbaPytan%3==0)
-            kolejnePytanie(kolory);
-        else if(liczbaPytan%3==1)
-            kolejnePytanie(odpowiedzi);
-        else
-            kolejnePytanie(ksztalty);
     }
     public void kolejnePytanie(ArrayList<?> arrayList){
         if(liczbaPytan%3==0)
@@ -163,12 +149,11 @@ public class Play extends AppCompatActivity {
         zagrajznowu = findViewById(R.id.znowu);
         czas = findViewById(R.id.czas);
         layout=findViewById(R.id.layout);
-        layout.setVisibility(View.INVISIBLE);
         przyciski.add(przycisk0);
         przyciski.add(przycisk1);
         przyciski.add(przycisk2);
         przyciski.add(przycisk3);
         koniec=findViewById(R.id.koniec);
-        start();
+        zagrajPonownie(findViewById(R.id.znowu));
     }
 }

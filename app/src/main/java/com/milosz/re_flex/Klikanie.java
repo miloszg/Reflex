@@ -17,8 +17,8 @@ public class Klikanie extends AppCompatActivity {
         setContentView(R.layout.activity_klikanie);
         button=findViewById(R.id.kliknij);
         Random rand=new Random();
-        int posX=rand.nextInt(730);
-        int posY=rand.nextInt(800)+400;
+        int posX=rand.nextInt(430);
+        int posY=rand.nextInt(400)+400;
         button.setX(posX);
         button.setY(posY);
 
