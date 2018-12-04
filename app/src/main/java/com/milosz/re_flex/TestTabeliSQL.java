@@ -49,7 +49,7 @@ public class TestTabeliSQL extends AppCompatActivity {
             for(int i =0; i < dlugosc; i++) {
                 Map<String,Object> listItemMap = new HashMap<String,Object>();
                 listItemMap.put("nazwa", name.get(i));
-                listItemMap.put("punkty", Play.liczba_punktow.get(i)); //points.get(i)
+                listItemMap.put("punkty", StartAktywnosc.liczba_punktow.get(i)); //points.get(i)
                 itemDataList.add(listItemMap);
             }
 

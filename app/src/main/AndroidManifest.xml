@@ -30,7 +30,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Fakty" />
         <activity android:name=".TestTabeliSQL" />
-        <activity android:name=".Klikanie"></activity>
+        <activity android:name=".Klikanie" />
+        <activity android:name=".StartAktywnosc"></activity>
     </application>
 
 </manifest>

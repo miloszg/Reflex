@@ -16,6 +16,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private Context context=this;
+    public Context getContext() {
+        return context;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater=getMenuInflater();
@@ -28,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          super.onOptionsItemSelected(item);
         switch (item.getItemId()){
             case R.id.zasady:
-                Intent intent7 = new Intent(this, Klikanie.class);
+                Intent intent7 = new Intent(this, StartAktywnosc.class);
                 startActivity(intent7);
                 return true;
             case R.id.ustawienia:
@@ -61,7 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent1);
                 break;
             case R.id.button4:
-                System.exit(0);
+                //Intent lole = new Intent(this, StartRozgrywki.class);
+                //startActivity(lole);
                 break;
             default:
                 break;

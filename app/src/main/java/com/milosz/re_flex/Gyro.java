@@ -1,5 +1,6 @@
 package com.milosz.re_flex;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -21,7 +22,6 @@ public class Gyro extends AppCompatActivity {
     TextView textView;
     TextView wynik;
     String[] kierunki={"PRZOD","TYL", "PRAWO", "LEWO"};
-    float[] position=new float[3];
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private SensorEventListener sensorEventListener;
@@ -51,29 +51,28 @@ public class Gyro extends AppCompatActivity {
             } else if(event.values[0]> 5.0f && pozycja == 3){
                 //LEWO
                 getWindow().getDecorView().setBackgroundColor(Color.BLUE);
-                    punkty++;
+                StartAktywnosc.liczba_pkt_int++;
+                Intent start = new Intent(Gyro.this, StartAktywnosc.class);
+                startActivity(start);
             } else if(event.values[1]< -3.0f && pozycja == 0){
                 //PRZOD
                 getWindow().getDecorView().setBackgroundColor(Color.GREEN);
-                    punkty++;
+                StartAktywnosc.liczba_pkt_int++;
+                Intent start = new Intent(Gyro.this, StartAktywnosc.class);
+                startActivity(start);
             } else if(event.values[1]> 9.0f && pozycja == 1){
                 //TYL
                 getWindow().getDecorView().setBackgroundColor(Color.YELLOW);
-                    punkty++;
+                StartAktywnosc.liczba_pkt_int++;
+                Intent start = new Intent(Gyro.this, StartAktywnosc.class);
+                startActivity(start);
             }
             wynik.setText(String.valueOf(punkty));
-            //Log.i("param","X: "+String.valueOf(event.values[0])+" Y: "+String.valueOf(event.values[1])+" Z: "+String.valueOf(event.values[2]));
-            //Log.i("Y",String.valueOf(event.values[1]));
-           // Log.i("Z",String.valueOf(event.values[2]));
-//                position[0]=event.values[0];
-//                position[1]=event.values[1];
-//                position[2]=event.values[3];
 
         }
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
         }};
 
     }

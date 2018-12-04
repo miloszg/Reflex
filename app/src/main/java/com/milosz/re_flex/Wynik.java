@@ -30,7 +30,7 @@ public class Wynik extends AppCompatActivity {
     TextView gratulacje;
     static ArrayList<String> lista_nazw=new ArrayList<>();
 
-    int liczba_punktow=Integer.valueOf(Play.liczba_punktow.get(Play.liczba_punktow.size()-1));
+    int liczba_punktow=Integer.valueOf(StartAktywnosc.liczba_punktow.get(StartAktywnosc.liczba_punktow.size()-1));
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

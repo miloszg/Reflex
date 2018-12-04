@@ -44,7 +44,7 @@ public class tabela_wynikow extends AppCompatActivity {
         for(int i =0; i < dlugosc; i++) {
             Map<String,Object> listItemMap = new HashMap<String,Object>();
             listItemMap.put("nazwa", Wynik.lista_nazw.get(i));
-            listItemMap.put("punkty", Play.liczba_punktow.get(i));
+            listItemMap.put("punkty", StartAktywnosc.liczba_punktow.get(i));
             itemDataList.add(listItemMap);
         }
 

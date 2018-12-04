@@ -1,5 +1,6 @@
 package com.milosz.re_flex;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
@@ -18,7 +19,7 @@ public class Play extends AppCompatActivity {
     String[] kolorki={"CZERWONY", "NIEBIESKI", "ZIELONY", "FIOLETOWY"};
     String[] ksztalciki={"ROMB","KOLKO", "KWADRAT", "TROJKAT"};
     String[] puste={"","","",""};
-    TextView odliczanie,czas, wynikowy, dzialanie, punkty;
+    TextView czas, wynikowy, dzialanie;
     Button przycisk0 ,przycisk1, przycisk2, przycisk3;
     Button zagrajznowu,koniec;
     ConstraintLayout layout;
@@ -28,26 +29,14 @@ public class Play extends AppCompatActivity {
     ArrayList<Button> przyciski = new ArrayList<>();
     ArrayList<String> kolory = new ArrayList<>();
     ArrayList<Character> ksztalty = new ArrayList<>();
-    static ArrayList<String> liczba_punktow=new ArrayList<>();
 
-    static public int liczbaPunktow;
     int liczbaPytan=0;
     int pozycjaDobrejOdpowiedzi;
 
     public void start()
     {
-        odliczanie.setVisibility(View.VISIBLE);
-        new CountDownTimer(4100,1000) {
-            @Override
-            public void onTick(long l) {
-                odliczanie.setText(String.valueOf(l/1000));
-            }
-            @Override
-            public void onFinish() {
-                zagrajPonownie(findViewById(R.id.znowu));
-                layout.setVisibility(View.VISIBLE);
-            }
-        }.start();
+        zagrajPonownie(findViewById(R.id.znowu));
+        layout.setVisibility(View.VISIBLE);
     }
     public void generowaniePytanMatma(){
         int a=rand.nextInt(11);
@@ -90,7 +79,7 @@ public class Play extends AppCompatActivity {
         dzialanie.setText(ksztalciki[pozycjaDobrejOdpowiedzi]);
     }
     public void zagrajPonownie(View view){
-        liczbaPunktow=0;
+
         liczbaPytan=0;
         czas.setText("30s");
         if(liczbaPytan%3==0)
@@ -99,7 +88,6 @@ public class Play extends AppCompatActivity {
             kolejnePytanie(odpowiedzi);
         else
             kolejnePytanie(ksztalty);
-        punkty.setText(Integer.toString(liczbaPunktow)+"/"+Integer.toString(liczbaPytan));
         zagrajznowu.setVisibility(View.INVISIBLE);
         wynikowy.setText("");
         for(Button b:przyciski) {
@@ -126,13 +114,15 @@ public class Play extends AppCompatActivity {
     public void wybierz(View view){
         if (Integer.toString(pozycjaDobrejOdpowiedzi).equals(view.getTag().toString())){
             wynikowy.setText("Dobrze! najs");
-            liczbaPunktow++;
+            StartAktywnosc.liczba_pkt_int++;
+            Intent start = new Intent(this, StartAktywnosc.class)
+            .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(start);
         }
         else{
             wynikowy.setText("Ehhh...");
         }
         liczbaPytan++;
-        punkty.setText(Integer.toString(liczbaPunktow)+"/"+Integer.toString(liczbaPytan));
         if(liczbaPytan%3==0)
             kolejnePytanie(kolory);
         else if(liczbaPytan%3==1)
@@ -155,7 +145,7 @@ public class Play extends AppCompatActivity {
     }
     public void koniec(View view)
     {
-        liczba_punktow.add(String.valueOf(liczbaPunktow));
+        StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
         Intent intent = new Intent(this, Wynik.class);
         startActivity(intent);
 
@@ -170,7 +160,6 @@ public class Play extends AppCompatActivity {
         przycisk2=findViewById(R.id.button8);
         przycisk3=findViewById(R.id.button9);
         wynikowy=findViewById(R.id.wynikowy);
-        punkty=findViewById(R.id.wynik);
         zagrajznowu = findViewById(R.id.znowu);
         czas = findViewById(R.id.czas);
         layout=findViewById(R.id.layout);
@@ -179,7 +168,6 @@ public class Play extends AppCompatActivity {
         przyciski.add(przycisk1);
         przyciski.add(przycisk2);
         przyciski.add(przycisk3);
-        odliczanie=findViewById(R.id.odliczanie);
         koniec=findViewById(R.id.koniec);
         start();
     }

@@ -1,5 +1,6 @@
 package com.milosz.re_flex;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,13 +16,16 @@ public class Klikanie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_klikanie);
         button=findViewById(R.id.kliknij);
+        Random rand=new Random();
+        int posX=rand.nextInt(730);
+        int posY=rand.nextInt(800)+400;
+        button.setX(posX);
+        button.setY(posY);
 
     }
     public void onClick(View view){
-        Random rand=new Random();
-        int posX=rand.nextInt(730);
-        int posY=rand.nextInt(1000)+400;
-        button.setX(posX);
-        button.setY(posY);
+        StartAktywnosc.liczba_pkt_int++;
+        Intent start = new Intent(this, StartAktywnosc.class);
+        startActivity(start);
     }
 }
