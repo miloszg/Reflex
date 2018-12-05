@@ -41,21 +41,11 @@ public class Fakty extends AppCompatActivity {
 
     }
     public void drukuj() throws IOException {
-//        File file = new File("E:\\Reflex\\app\\src\\main\\res\\values\\fakty.txt");
-//
-//        BufferedReader in = new BufferedReader(
-//                new InputStreamReader(
-//                        new FileInputStream(file), "UTF-16"));
         String fakty=getString(R.string.fakty);
         BufferedReader reader = new BufferedReader(new StringReader(fakty));
         String str=reader.readLine();
         String s[] = str.split("KUPA");
-//        int i = 0;
-//        while ((str = reader.readLine()) != null) {
-//            s[i] = str;
-//            i++;
-//        }
-        //Log.i("kupencjusz",fakty);
+
         Log.i("Kupa str",str);
         Log.i("Kupa tekst",s[1]);
 

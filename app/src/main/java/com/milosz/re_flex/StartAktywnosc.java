@@ -57,17 +57,14 @@ public class StartAktywnosc extends AppCompatActivity {
             switch (wybrana_minigra) {
                 case 0:
                     Intent panel = new Intent(StartAktywnosc.this, Play.class);
-
                     startActivity(panel);
                     break;
                 case 1:
                     Intent gyro = new Intent(StartAktywnosc.this, Klikanie.class);
-
                     startActivity(gyro);
                     break;
                 case 2:
-                    Intent klikanie = new Intent(StartAktywnosc.this, Klikanie.class);
-
+                    Intent klikanie = new Intent(StartAktywnosc.this, Gyro.class);
                     startActivity(klikanie);
                     break;
                 default:

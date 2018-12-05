@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent7);
                 return true;
             case R.id.ustawienia:
-                Intent intent8 = new Intent(this, Gyro.class);
+                Intent intent8 = new Intent(this, Klikanie.class);
                 startActivity(intent8);
                 return true;
             case R.id.tabela:
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button buttonWyjdz = (Button) findViewById(R.id.button4);
         buttonGraj.setOnClickListener(this);
         buttonWyjdz.setOnClickListener(this);
+        StartAktywnosc.liczba_pkt_int=0;
 
     }
     public void onClick(View view){
@@ -66,8 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent1);
                 break;
             case R.id.button4:
-                //Intent lole = new Intent(this, StartRozgrywki.class);
-                //startActivity(lole);
+                //wyjdz button
                 break;
             default:
                 break;

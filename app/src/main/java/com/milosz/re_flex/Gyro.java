@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,11 +18,11 @@ import java.util.Random;
 
 public class Gyro extends AppCompatActivity {
 
-    int punkty=0;
     int pozycja=0;
+
     TextView textView;
-    TextView wynik;
-    String[] kierunki={"PRZOD","TYL", "PRAWO", "LEWO"};
+    ImageView imageView;
+    String[] kierunki={"GÓRA","DÓŁ", "PRAWO", "LEWO"};
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private SensorEventListener sensorEventListener;
@@ -29,16 +30,32 @@ public class Gyro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gyro);
+        textView=findViewById(R.id.polecenie);
+        imageView=findViewById(R.id.imageView);
         sensorManager= (SensorManager) getSystemService(SENSOR_SERVICE);
-        accelerometer=sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER); //tu bylo type_gyro
-
+        accelerometer=sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        Random rand=new Random();
+        pozycja=rand.nextInt(4);
+        textView.setText(kierunki[pozycja]);
+        switch(pozycja){
+            case 0:
+                imageView.setImageResource(R.drawable.up);
+                break;
+            case 1:
+                imageView.setImageResource(R.drawable.down);
+                break;
+            case 2:
+                imageView.setImageResource(R.drawable.right);
+                break;
+            case 3:
+                imageView.setImageResource(R.drawable.left);
+                break;
+        }
         if(accelerometer==null){
             Toast.makeText(this, "Niestety twoje urządzenie nie posiada Żyroskopu", Toast.LENGTH_SHORT).show();
             finish();
         }
-        Button button=findViewById(R.id.kolejny);
-        textView=findViewById(R.id.polecenie);
-        wynik=findViewById(R.id.wynik);
+
 
     sensorEventListener=new SensorEventListener() {
         @Override
@@ -47,7 +64,9 @@ public class Gyro extends AppCompatActivity {
             if(event.values[0]<-5.0f && pozycja == 2){
                 //PRAWO
                 getWindow().getDecorView().setBackgroundColor(Color.RED);
-                punkty++;
+                StartAktywnosc.liczba_pkt_int++;
+                Intent start = new Intent(Gyro.this, StartAktywnosc.class);
+                startActivity(start);;
             } else if(event.values[0]> 5.0f && pozycja == 3){
                 //LEWO
                 getWindow().getDecorView().setBackgroundColor(Color.BLUE);
@@ -55,34 +74,23 @@ public class Gyro extends AppCompatActivity {
                 Intent start = new Intent(Gyro.this, StartAktywnosc.class);
                 startActivity(start);
             } else if(event.values[1]< -3.0f && pozycja == 0){
-                //PRZOD
+                //GÓRA
                 getWindow().getDecorView().setBackgroundColor(Color.GREEN);
                 StartAktywnosc.liczba_pkt_int++;
                 Intent start = new Intent(Gyro.this, StartAktywnosc.class);
                 startActivity(start);
             } else if(event.values[1]> 9.0f && pozycja == 1){
-                //TYL
+                //DÓŁ
                 getWindow().getDecorView().setBackgroundColor(Color.YELLOW);
                 StartAktywnosc.liczba_pkt_int++;
                 Intent start = new Intent(Gyro.this, StartAktywnosc.class);
                 startActivity(start);
             }
-            wynik.setText(String.valueOf(punkty));
-
         }
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }};
-
-    }
-    public void onClick(View view){
-        //0-"PRZOD" 1-"TYL" 2-"PRAWO" 3-"LEWO"};
-        //Log.i("param","X: "+String.valueOf(event.values[0])+" Y: "+String.valueOf(event.values[1])+" Z: "+String.valueOf(event.values[2]));
-        //Log.i("param","X: "+String.valueOf(position[0])+" Y: "+String.valueOf(position[1])+" Z: "+String.valueOf(position[2]));
-        Random rand=new Random();
-        pozycja=rand.nextInt(4);
-        textView.setText(kierunki[pozycja]);
 
     }
     @Override

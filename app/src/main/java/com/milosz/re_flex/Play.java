@@ -19,9 +19,9 @@ public class Play extends AppCompatActivity {
     String[] kolorki={"CZERWONY", "NIEBIESKI", "ZIELONY", "FIOLETOWY"};
     String[] ksztalciki={"ROMB","KOLKO", "KWADRAT", "TROJKAT"};
     String[] puste={"","","",""};
-    TextView czas, wynikowy, dzialanie;
+    TextView dzialanie;
     Button przycisk0 ,przycisk1, przycisk2, przycisk3;
-    Button zagrajznowu,koniec;
+    Button koniec;
     ConstraintLayout layout;
     Random rand=new Random();
 
@@ -73,47 +73,28 @@ public class Play extends AppCompatActivity {
         ksztalty.add(trojkat);
         dzialanie.setText(ksztalciki[pozycjaDobrejOdpowiedzi]);
     }
-    public void zagrajPonownie(View view){
+    public void zagrajPonownie(View view) {
 
-        if(liczbaPytan%3==0)
+        if (liczbaPytan % 3 == 0)
             kolejnePytanie(kolory);
-        else if(liczbaPytan%3==1)
+        else if (liczbaPytan % 3 == 1)
             kolejnePytanie(odpowiedzi);
         else
             kolejnePytanie(ksztalty);
-        zagrajznowu.setVisibility(View.INVISIBLE);
-        wynikowy.setText("");
-        for(Button b:przyciski) {
+        for (Button b : przyciski) {
             b.setEnabled(true);
         }
         przycisk0.setEnabled(true);
-        new CountDownTimer(10100,1000){
-
-            @Override
-            public void onTick(long l) {
-                czas.setText(String.valueOf(l/1000)+ "s");
-            }
-            @Override
-            public void onFinish() {
-                wynikowy.setText("Koniec czasu");
-                zagrajznowu.setVisibility(View.VISIBLE);
-                for(Button b:przyciski) {
-                    b.setEnabled(false);
-                }
-            }
-        }.start();
-
     }
     public void wybierz(View view){
         if (Integer.toString(pozycjaDobrejOdpowiedzi).equals(view.getTag().toString())){
-            wynikowy.setText("Dobrze! najs");
+
             StartAktywnosc.liczba_pkt_int++;
-            Intent start = new Intent(this, StartAktywnosc.class)
-            .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            Intent start = new Intent(this, StartAktywnosc.class);
             startActivity(start);
         }
         else{
-            wynikowy.setText("Ehhh...");
+            koniec(findViewById(R.id.koniec));
         }
     }
     public void kolejnePytanie(ArrayList<?> arrayList){
@@ -145,15 +126,12 @@ public class Play extends AppCompatActivity {
         przycisk1=findViewById(R.id.button7);
         przycisk2=findViewById(R.id.button8);
         przycisk3=findViewById(R.id.button9);
-        wynikowy=findViewById(R.id.wynikowy);
-        zagrajznowu = findViewById(R.id.znowu);
-        czas = findViewById(R.id.czas);
         layout=findViewById(R.id.layout);
         przyciski.add(przycisk0);
         przyciski.add(przycisk1);
         przyciski.add(przycisk2);
         przyciski.add(przycisk3);
         koniec=findViewById(R.id.koniec);
-        zagrajPonownie(findViewById(R.id.znowu));
+        zagrajPonownie(findViewById(R.id.koniec));
     }
 }

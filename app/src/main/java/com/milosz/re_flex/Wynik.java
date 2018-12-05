@@ -64,8 +64,8 @@ public class Wynik extends AppCompatActivity {
 //        db.viewData();
 
         lista_nazw.add(name);
-        Intent intent5 = new Intent(this, MainActivity.class);
-        startActivity(intent5);
+        Intent fakty = new Intent(this, Fakty.class);
+        startActivity(fakty);
 
     }
 }
