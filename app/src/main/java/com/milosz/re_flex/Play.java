@@ -2,6 +2,8 @@ package com.milosz.re_flex;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -23,8 +25,9 @@ public class Play extends AppCompatActivity {
     Button przycisk0 ,przycisk1, przycisk2, przycisk3;
     Button koniec;
     ConstraintLayout layout;
+    CountDownTimer timer;
     Random rand=new Random();
-
+    MediaPlayer mp = new MediaPlayer();
     ArrayList<Integer> odpowiedzi = new ArrayList<>();
     ArrayList<Button> przyciski = new ArrayList<>();
     ArrayList<String> kolory = new ArrayList<>();
@@ -88,10 +91,8 @@ public class Play extends AppCompatActivity {
     }
     public void wybierz(View view){
         if (Integer.toString(pozycjaDobrejOdpowiedzi).equals(view.getTag().toString())){
-
             StartAktywnosc.liczba_pkt_int++;
-            Intent start = new Intent(this, StartAktywnosc.class);
-            startActivity(start);
+            nastepna();
         }
         else{
             koniec(findViewById(R.id.koniec));
@@ -110,13 +111,7 @@ public class Play extends AppCompatActivity {
         przycisk2.setText(String.valueOf(arrayList.get(2)));
         przycisk3.setText(String.valueOf(arrayList.get(3)));
     }
-    public void koniec(View view)
-    {
-        StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
-        Intent intent = new Intent(this, Wynik.class);
-        startActivity(intent);
 
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,5 +128,29 @@ public class Play extends AppCompatActivity {
         przyciski.add(przycisk3);
         koniec=findViewById(R.id.koniec);
         zagrajPonownie(findViewById(R.id.koniec));
+
+        timer=new CountDownTimer(5100,1000) {
+            @Override
+            public void onTick(long l) {
+                mp.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
+                mp.start();
+            }
+            @Override
+            public void onFinish() {
+                koniec(findViewById(R.id.koniec));
+            }
+        }.start();
+    }
+    public void koniec(View view)
+    {
+        timer.cancel();
+        StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
+        Intent intent = new Intent(this, Wynik.class);
+        startActivity(intent);
+    }
+    public void nastepna() {
+        timer.cancel();
+        Intent start = new Intent(this, StartAktywnosc.class);
+        startActivity(start);
     }
 }

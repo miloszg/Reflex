@@ -6,6 +6,9 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +25,9 @@ public class Gyro extends AppCompatActivity {
 
     TextView textView;
     ImageView imageView;
+    MediaPlayer mp = new MediaPlayer();
     String[] kierunki={"GÓRA","DÓŁ", "PRAWO", "LEWO"};
+    CountDownTimer timer;
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private SensorEventListener sensorEventListener;
@@ -64,33 +69,37 @@ public class Gyro extends AppCompatActivity {
             if(event.values[0]<-5.0f && pozycja == 2){
                 //PRAWO
                 getWindow().getDecorView().setBackgroundColor(Color.RED);
-                StartAktywnosc.liczba_pkt_int++;
-                Intent start = new Intent(Gyro.this, StartAktywnosc.class);
-                startActivity(start);;
+                nastepna();
             } else if(event.values[0]> 5.0f && pozycja == 3){
                 //LEWO
                 getWindow().getDecorView().setBackgroundColor(Color.BLUE);
-                StartAktywnosc.liczba_pkt_int++;
-                Intent start = new Intent(Gyro.this, StartAktywnosc.class);
-                startActivity(start);
+                nastepna();
             } else if(event.values[1]< -3.0f && pozycja == 0){
                 //GÓRA
                 getWindow().getDecorView().setBackgroundColor(Color.GREEN);
-                StartAktywnosc.liczba_pkt_int++;
-                Intent start = new Intent(Gyro.this, StartAktywnosc.class);
-                startActivity(start);
+                nastepna();
             } else if(event.values[1]> 9.0f && pozycja == 1){
                 //DÓŁ
                 getWindow().getDecorView().setBackgroundColor(Color.YELLOW);
-                StartAktywnosc.liczba_pkt_int++;
-                Intent start = new Intent(Gyro.this, StartAktywnosc.class);
-                startActivity(start);
+                nastepna();
             }
         }
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }};
+
+        timer=new CountDownTimer(5100,1000) {
+            @Override
+            public void onTick(long l) {
+//                mp.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
+//                mp.start();
+            }
+            @Override
+            public void onFinish() {
+                    koniec();
+            }
+        }.start();
 
     }
     @Override
@@ -103,5 +112,17 @@ public class Gyro extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(sensorEventListener);
+    }
+
+    public void nastepna(){
+        timer.cancel();
+        StartAktywnosc.liczba_pkt_int++;
+        Intent start = new Intent(Gyro.this, StartAktywnosc.class);
+        startActivity(start);
+    }
+    public void koniec(){
+        timer.cancel();
+        Intent start = new Intent(Gyro.this, Wynik.class);
+        startActivity(start);
     }
 }

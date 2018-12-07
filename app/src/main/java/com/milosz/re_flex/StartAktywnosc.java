@@ -32,28 +32,13 @@ public class StartAktywnosc extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_aktywnosc);
         odliczanko=findViewById(R.id.odliczanko);
-
-
-//        new CountDownTimer(4100,1000) {
-//            @Override
-//            public void onTick(long l) {
-//                odliczanko.setText(String.valueOf(l/1000));
-//            }
-//            @Override
-//            public void onFinish() {
-//
-//            }
-//        }.start();
-
         wybieranie();
-
+        liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
 
     }
     public void wybieranie(){
         Random rand = new Random();
         int wybrana_minigra = rand.nextInt(3);
-        boolean przegrana=false;
-
             switch (wybrana_minigra) {
                 case 0:
                     Intent panel = new Intent(StartAktywnosc.this, Play.class);
