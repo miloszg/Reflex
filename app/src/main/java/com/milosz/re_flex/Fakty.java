@@ -20,8 +20,8 @@ import java.util.Random;
 
 public class Fakty extends AppCompatActivity {
 
-    TextView topText,bottomText;
-    Button przejdz_dalej;
+    private TextView topText,bottomText;
+    private Button przejdz_dalej;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,17 +38,12 @@ public class Fakty extends AppCompatActivity {
     public void onClick(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-
     }
     public void drukuj() throws IOException {
         String fakty=getString(R.string.fakty);
         BufferedReader reader = new BufferedReader(new StringReader(fakty));
         String str=reader.readLine();
         String s[] = str.split("KUPA");
-
-        Log.i("Kupa str",str);
-        Log.i("Kupa tekst",s[1]);
-
 
         Random rand = new Random();
         int liczba = rand.nextInt(10) * 2;

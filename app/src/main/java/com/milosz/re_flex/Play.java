@@ -17,24 +17,26 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Play extends AppCompatActivity {
-    DataBase db;
-    String[] kolorki={"CZERWONY", "NIEBIESKI", "ZIELONY", "FIOLETOWY"};
-    String[] ksztalciki={"ROMB","KOLKO", "KWADRAT", "TROJKAT"};
-    String[] puste={"","","",""};
-    TextView dzialanie;
-    Button przycisk0 ,przycisk1, przycisk2, przycisk3;
-    Button koniec;
-    ConstraintLayout layout;
-    CountDownTimer timer;
-    Random rand=new Random();
-    MediaPlayer mp = new MediaPlayer();
-    ArrayList<Integer> odpowiedzi = new ArrayList<>();
-    ArrayList<Button> przyciski = new ArrayList<>();
-    ArrayList<String> kolory = new ArrayList<>();
-    ArrayList<Character> ksztalty = new ArrayList<>();
+    private DataBase db;
+    private String[] kolorki={"CZERWONY", "NIEBIESKI", "ZIELONY", "FIOLETOWY"};
+    private String[] ksztalciki={"ROMB","KOLKO", "KWADRAT", "TROJKAT"};
+    private String[] puste={"","","",""};
 
-    int liczbaPytan=rand.nextInt(3);
-    int pozycjaDobrejOdpowiedzi;
+    //globalne
+    private TextView dzialanie;
+    private Button przycisk0 ,przycisk1, przycisk2, przycisk3,koniec;
+    private CountDownTimer timer;
+    private Random rand=new Random();
+    private MediaPlayer mp = new MediaPlayer();
+
+    //Arraylisty do obsługi 4 panelowych mini-gier
+    private ArrayList<Integer> odpowiedzi = new ArrayList<>();
+    private ArrayList<Button> przyciski = new ArrayList<>();
+    private ArrayList<String> kolory = new ArrayList<>();
+    private ArrayList<Character> ksztalty = new ArrayList<>();
+
+    private int liczbaPytan=rand.nextInt(3);
+    private int pozycjaDobrejOdpowiedzi;
 
     public void generowaniePytanMatma(){
         int a=rand.nextInt(11);
@@ -121,7 +123,6 @@ public class Play extends AppCompatActivity {
         przycisk1=findViewById(R.id.button7);
         przycisk2=findViewById(R.id.button8);
         przycisk3=findViewById(R.id.button9);
-        layout=findViewById(R.id.layout);
         przyciski.add(przycisk0);
         przyciski.add(przycisk1);
         przyciski.add(przycisk2);

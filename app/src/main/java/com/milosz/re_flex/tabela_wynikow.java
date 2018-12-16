@@ -25,15 +25,14 @@ import java.util.stream.Collectors;
 
 public class tabela_wynikow extends AppCompatActivity {
 
-    int dlugosc;
-    ListView myListView;
+    private int dlugosc;
+    private ListView myListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabela_wynikow);
         zrobListe();
-
     }
 
     public void zrobListe() {
@@ -52,8 +51,4 @@ public class tabela_wynikow extends AppCompatActivity {
                 new String[]{"nazwa","punkty"},new int[]{android.R.id.text1,android.R.id.text2});
         myListView.setAdapter(simpleAdapter);
     }
-
-
-
-
 }

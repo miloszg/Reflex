@@ -14,12 +14,12 @@ import java.util.Map;
 
 public class TestTabeliSQL extends AppCompatActivity {
 
-    DataBase db;
-    ListView listView;
-    ArrayList<String> name;
-    ArrayList<String> points;
-    ArrayAdapter adapter;
-    int dlugosc;
+    private DataBase db;
+    private ListView listView;
+    private ArrayList<String> name;
+    private ArrayList<String> points;
+    private ArrayAdapter adapter;
+    private int dlugosc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

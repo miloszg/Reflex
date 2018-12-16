@@ -12,9 +12,11 @@ import android.widget.Button;
 import java.util.Random;
 
 public class Klikanie extends AppCompatActivity {
-    MediaPlayer mp = new MediaPlayer();
-    Button button;
-    CountDownTimer timer;
+
+    private MediaPlayer mp = new MediaPlayer();
+    private Button button;
+    private CountDownTimer timer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,7 @@ public class Klikanie extends AppCompatActivity {
     public void koniec(){
         timer.cancel();
         Intent start = new Intent(this, Wynik.class);
+        StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
         startActivity(start);
     }
 }

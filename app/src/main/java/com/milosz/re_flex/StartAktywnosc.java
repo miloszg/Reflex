@@ -15,7 +15,7 @@ import static android.support.v4.content.ContextCompat.startActivity;
 public class StartAktywnosc extends AppCompatActivity {
     static ArrayList<String> liczba_punktow=new ArrayList<>();
     static int liczba_pkt_int=0;
-    TextView odliczanko;
+    private TextView odliczanko;
     /*
                 dostepne minigry:
                 -4 panel - kolory / ksztalty / matma - Play
@@ -33,8 +33,6 @@ public class StartAktywnosc extends AppCompatActivity {
         setContentView(R.layout.activity_start_aktywnosc);
         odliczanko=findViewById(R.id.odliczanko);
         wybieranie();
-        liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
-
     }
     public void wybieranie(){
         Random rand = new Random();
@@ -53,7 +51,7 @@ public class StartAktywnosc extends AppCompatActivity {
                     startActivity(klikanie);
                     break;
                 default:
-                    Log.i("Spiedzialem się", "i zestałem");
+                    Log.i("Wystąpił", " błąd");
 
         }
     }

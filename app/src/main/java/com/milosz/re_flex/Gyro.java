@@ -21,13 +21,13 @@ import java.util.Random;
 
 public class Gyro extends AppCompatActivity {
 
-    int pozycja=0;
+    private int pozycja=0;
 
-    TextView textView;
-    ImageView imageView;
-    MediaPlayer mp = new MediaPlayer();
-    String[] kierunki={"GÓRA","DÓŁ", "PRAWO", "LEWO"};
-    CountDownTimer timer;
+    private TextView textView;
+    private ImageView imageView;
+    private MediaPlayer mp = new MediaPlayer();
+    private String[] kierunki={"GÓRA","DÓŁ", "PRAWO", "LEWO"};
+    private CountDownTimer timer;
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private SensorEventListener sensorEventListener;
@@ -60,7 +60,6 @@ public class Gyro extends AppCompatActivity {
             Toast.makeText(this, "Niestety twoje urządzenie nie posiada Żyroskopu", Toast.LENGTH_SHORT).show();
             finish();
         }
-
 
     sensorEventListener=new SensorEventListener() {
         @Override
@@ -120,8 +119,10 @@ public class Gyro extends AppCompatActivity {
         Intent start = new Intent(Gyro.this, StartAktywnosc.class);
         startActivity(start);
     }
+
     public void koniec(){
         timer.cancel();
+        StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
         Intent start = new Intent(Gyro.this, Wynik.class);
         startActivity(start);
     }

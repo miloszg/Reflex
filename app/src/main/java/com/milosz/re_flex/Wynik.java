@@ -21,13 +21,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Wynik extends AppCompatActivity {
-
-    DataBase db;
-
-    int wynik=3;
-    Button button;
-    EditText edit;
-    TextView gratulacje;
+    private DataBase db;
+    private Button button;
+    private EditText edit;
+    private TextView gratulacje;
     static ArrayList<String> lista_nazw=new ArrayList<>();
 
     int liczba_punktow=Integer.valueOf(StartAktywnosc.liczba_punktow.get(StartAktywnosc.liczba_punktow.size()-1));
@@ -41,7 +38,6 @@ public class Wynik extends AppCompatActivity {
         button=findViewById(R.id.buttonWynikowy);
         edit=findViewById(R.id.editText);
         gratulacje=findViewById(R.id.gratulacje);
-        Play p=new Play();
         gratulacje.setText("Gratulacje zdobyłeś " +liczba_punktow+ " punktów");
 
     }
@@ -66,6 +62,5 @@ public class Wynik extends AppCompatActivity {
         lista_nazw.add(name);
         Intent fakty = new Intent(this, Fakty.class);
         startActivity(fakty);
-
     }
 }
