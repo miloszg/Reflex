@@ -33,11 +33,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          super.onOptionsItemSelected(item);
         switch (item.getItemId()){
             case R.id.zasady:
-                Intent intent7 = new Intent(this, StartAktywnosc.class);
+                Intent intent7 = new Intent(this, zasady_gry.class);
                 startActivity(intent7);
                 return true;
             case R.id.ustawienia:
-                Intent intent8 = new Intent(this, Klikanie.class);
+                Intent intent8 = new Intent(this, ustawienia.class);
                 startActivity(intent8);
                 return true;
             case R.id.tabela:

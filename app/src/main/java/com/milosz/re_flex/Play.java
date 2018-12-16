@@ -24,7 +24,7 @@ public class Play extends AppCompatActivity {
 
     //globalne
     private TextView dzialanie;
-    private Button przycisk0 ,przycisk1, przycisk2, przycisk3,koniec;
+    private Button przycisk0 ,przycisk1, przycisk2, przycisk3;
     private CountDownTimer timer;
     private Random rand=new Random();
     private MediaPlayer mp = new MediaPlayer();
@@ -127,7 +127,6 @@ public class Play extends AppCompatActivity {
         przyciski.add(przycisk1);
         przyciski.add(przycisk2);
         przyciski.add(przycisk3);
-        koniec=findViewById(R.id.koniec);
         zagrajPonownie(findViewById(R.id.koniec));
 
         timer=new CountDownTimer(5100,1000) {
