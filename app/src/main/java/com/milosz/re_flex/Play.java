@@ -97,7 +97,7 @@ public class Play extends AppCompatActivity {
             nastepna();
         }
         else{
-            koniec(findViewById(R.id.koniec));
+            koniec(findViewById(R.id.button6));
         }
     }
     public void kolejnePytanie(ArrayList<?> arrayList){
@@ -127,9 +127,9 @@ public class Play extends AppCompatActivity {
         przyciski.add(przycisk1);
         przyciski.add(przycisk2);
         przyciski.add(przycisk3);
-        zagrajPonownie(findViewById(R.id.koniec));
+        zagrajPonownie(findViewById(R.id.button6));
 
-        timer=new CountDownTimer(5100,1000) {
+        timer=new CountDownTimer(StartAktywnosc.timer,1000) {
             @Override
             public void onTick(long l) {
                 mp.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
@@ -137,13 +137,14 @@ public class Play extends AppCompatActivity {
             }
             @Override
             public void onFinish() {
-                koniec(findViewById(R.id.koniec));
+                koniec(findViewById(R.id.button6));
             }
         }.start();
     }
     public void koniec(View view)
     {
         timer.cancel();
+        StartAktywnosc.timer=5100;
         StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
         Intent intent = new Intent(this, Wynik.class);
         startActivity(intent);

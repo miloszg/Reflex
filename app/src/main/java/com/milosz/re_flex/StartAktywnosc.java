@@ -15,6 +15,7 @@ import static android.support.v4.content.ContextCompat.startActivity;
 public class StartAktywnosc extends AppCompatActivity {
     static ArrayList<String> liczba_punktow=new ArrayList<>();
     static int liczba_pkt_int=0;
+    static int timer=5100;
     private TextView odliczanko;
     /*
                 dostepne minigry:
@@ -33,6 +34,10 @@ public class StartAktywnosc extends AppCompatActivity {
         setContentView(R.layout.activity_start_aktywnosc);
         odliczanko=findViewById(R.id.odliczanko);
         wybieranie();
+        if(liczba_pkt_int%5==0 & timer>1100){
+            timer=timer-500;
+            Log.i("KUPA liczba czasu",String.valueOf(timer));
+        }
     }
     public void wybieranie(){
         Random rand = new Random();
@@ -52,7 +57,6 @@ public class StartAktywnosc extends AppCompatActivity {
                     break;
                 default:
                     Log.i("Wystąpił", " błąd");
-
         }
     }
 }

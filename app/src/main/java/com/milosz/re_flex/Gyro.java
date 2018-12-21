@@ -88,7 +88,7 @@ public class Gyro extends AppCompatActivity {
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }};
 
-        timer=new CountDownTimer(5100,1000) {
+        timer=new CountDownTimer(StartAktywnosc.timer,1000) {
             @Override
             public void onTick(long l) {
 //                mp.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
@@ -122,6 +122,7 @@ public class Gyro extends AppCompatActivity {
 
     public void koniec(){
         timer.cancel();
+        StartAktywnosc.timer=5100;
         StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
         Intent start = new Intent(Gyro.this, Wynik.class);
         startActivity(start);

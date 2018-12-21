@@ -28,7 +28,7 @@ public class Klikanie extends AppCompatActivity {
         button.setX(posX);
         button.setY(posY);
 
-        timer=new CountDownTimer(5100,1000) {
+        timer=new CountDownTimer(StartAktywnosc.timer,1000) {
             @Override
             public void onTick(long l) {
                 mp.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
@@ -50,6 +50,7 @@ public class Klikanie extends AppCompatActivity {
 
     public void koniec(){
         timer.cancel();
+        StartAktywnosc.timer=5100;
         Intent start = new Intent(this, Wynik.class);
         StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
         startActivity(start);
