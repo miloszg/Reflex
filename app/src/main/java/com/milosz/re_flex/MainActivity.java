@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent7);
                 return true;
             case R.id.ustawienia:
-                Intent intent8 = new Intent(this, ustawienia.class);
+                Intent intent8 = new Intent(this, Play.class);
                 startActivity(intent8);
                 return true;
             case R.id.tabela:
@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button buttonGraj = (Button) findViewById(R.id.button0);
-        Button buttonWyjdz = (Button) findViewById(R.id.button4);
+        Button buttonGraj = findViewById(R.id.button0);
+        Button buttonWyjdz = findViewById(R.id.button4);
         buttonGraj.setOnClickListener(this);
         buttonWyjdz.setOnClickListener(this);
         StartAktywnosc.liczba_pkt_int=0;
@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+    @Override
+    public void onBackPressed() { }
 }
 
 

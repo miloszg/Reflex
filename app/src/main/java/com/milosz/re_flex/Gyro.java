@@ -38,6 +38,7 @@ public class Gyro extends AppCompatActivity {
         textView=findViewById(R.id.polecenie);
         imageView=findViewById(R.id.imageView);
         sensorManager= (SensorManager) getSystemService(SENSOR_SERVICE);
+        assert sensorManager != null;
         accelerometer=sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         Random rand=new Random();
         pozycja=rand.nextInt(4);
@@ -112,6 +113,8 @@ public class Gyro extends AppCompatActivity {
         super.onPause();
         sensorManager.unregisterListener(sensorEventListener);
     }
+    @Override
+    public void onBackPressed() { }
 
     public void nastepna(){
         timer.cancel();

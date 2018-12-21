@@ -63,4 +63,6 @@ public class Wynik extends AppCompatActivity {
         Intent fakty = new Intent(this, Fakty.class);
         startActivity(fakty);
     }
+    @Override
+    public void onBackPressed() { }
 }

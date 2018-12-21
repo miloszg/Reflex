@@ -36,7 +36,6 @@ public class StartAktywnosc extends AppCompatActivity {
         wybieranie();
         if(liczba_pkt_int%5==0 & timer>1100){
             timer=timer-500;
-            Log.i("KUPA liczba czasu",String.valueOf(timer));
         }
     }
     public void wybieranie(){
@@ -59,4 +58,6 @@ public class StartAktywnosc extends AppCompatActivity {
                     Log.i("Wystąpił", " błąd");
         }
     }
+    @Override
+    public void onBackPressed() { }
 }

@@ -55,4 +55,6 @@ public class Klikanie extends AppCompatActivity {
         StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
         startActivity(start);
     }
+    @Override
+    public void onBackPressed() { }
 }

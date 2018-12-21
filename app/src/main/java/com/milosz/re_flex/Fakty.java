@@ -43,11 +43,15 @@ public class Fakty extends AppCompatActivity {
         String fakty=getString(R.string.fakty);
         BufferedReader reader = new BufferedReader(new StringReader(fakty));
         String str=reader.readLine();
-        String s[] = str.split("KUPA");
+        String s[] = str.split("END");
 
         Random rand = new Random();
         int liczba = rand.nextInt(10) * 2;
         topText.setText(s[liczba]);
         bottomText.setText(s[liczba+1]);
+    }
+    @Override
+    public void onBackPressed() {
+
     }
 }

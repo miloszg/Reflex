@@ -154,4 +154,7 @@ public class Play extends AppCompatActivity {
         Intent start = new Intent(this, StartAktywnosc.class);
         startActivity(start);
     }
+
+    @Override
+    public void onBackPressed() { }
 }
