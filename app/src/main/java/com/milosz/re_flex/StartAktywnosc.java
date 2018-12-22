@@ -15,7 +15,7 @@ import java.util.Random;
 import static android.support.v4.content.ContextCompat.startActivity;
 
 public class StartAktywnosc extends AppCompatActivity {
-    static MediaPlayer clock;
+    static MediaPlayer mp;
     static ArrayList<String> liczba_punktow=new ArrayList<>();
     static int liczba_pkt_int=0;
     static int timer=5100;
@@ -41,10 +41,20 @@ public class StartAktywnosc extends AppCompatActivity {
             timer=timer-500;
         }
 
-        MediaPlayer mp= MediaPlayer.create(this,R.raw.correct_sound_effect);
+        mp= MediaPlayer.create(this,R.raw.correct_sound_effect);
         int maxVolume = 50;
         mp.setVolume(20,maxVolume);
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mpi) {
+                mpi.reset();
+                mpi.release();
+                mp = null;
+            }
+        });
         mp.start();
+
+
 
     }
     public void wybieranie(){
@@ -66,6 +76,16 @@ public class StartAktywnosc extends AppCompatActivity {
                 default:
                     Log.i("Wystąpił", " błąd");
         }
+    }
+    public static void setMediaPlayer(MediaPlayer clock){
+        clock.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.reset();
+                mp.release();
+            }
+        });
+        clock.start();
     }
     @Override
     public void onBackPressed() { }

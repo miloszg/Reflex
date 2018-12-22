@@ -22,7 +22,7 @@ public class Play extends AppCompatActivity {
     private String[] kolorki={"CZERWONY", "NIEBIESKI", "ZIELONY", "FIOLETOWY"};
     private String[] ksztalciki={"ROMB","KOLKO", "KWADRAT", "TROJKAT"};
     private String[] puste={"","","",""};
-    private SoundPool tick;
+
     //globalne
     private TextView dzialanie;
     private Button przycisk0 ,przycisk1, przycisk2, przycisk3;
@@ -129,18 +129,14 @@ public class Play extends AppCompatActivity {
         przyciski.add(przycisk2);
         przyciski.add(przycisk3);
         zagrajPonownie(findViewById(R.id.button6));
-        clock= MediaPlayer.create(this,R.raw.tick);
 
-        final int kupaID;
-        tick=new SoundPool(10, AudioManager.STREAM_MUSIC,1);
-        kupaID=tick.load(this,R.raw.tick,1);
-
+        clock= MediaPlayer.create(this,R.raw.tick_full);
+        StartAktywnosc.setMediaPlayer(clock);
 
         timer=new CountDownTimer(StartAktywnosc.timer,1000) {
             @Override
             public void onTick(long l) {
-                clock.start();
-                //tick.play(kupaID,1,1,1,0,1);
+
             }
             @Override
             public void onFinish() {
@@ -153,6 +149,7 @@ public class Play extends AppCompatActivity {
         Intent start = new Intent(this, StartAktywnosc.class);
         startActivity(start);
         clock.stop();
+        clock.release();
     }
     public void koniec(View view)
     {
@@ -162,6 +159,7 @@ public class Play extends AppCompatActivity {
         Intent intent = new Intent(this, Wynik.class);
         startActivity(intent);
         clock.stop();
+        clock.release();
     }
 
 

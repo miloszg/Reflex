@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class Klikanie extends AppCompatActivity {
 
-    private SoundPool tick;
+
     private MediaPlayer clock;
     private Button button;
     private CountDownTimer timer;
@@ -31,16 +31,12 @@ public class Klikanie extends AppCompatActivity {
         button.setX(posX);
         button.setY(posY);
 
-        final int kupaID;
-        tick=new SoundPool(10, AudioManager.STREAM_MUSIC,1);
-        kupaID=tick.load(this,R.raw.tick,1);
-        clock= MediaPlayer.create(this,R.raw.tick);
 
+        clock=MediaPlayer.create(this,R.raw.tick_full);
+        StartAktywnosc.setMediaPlayer(clock);
         timer=new CountDownTimer(StartAktywnosc.timer,1000) {
             @Override
             public void onTick(long l) {
-                clock.start();
-                //tick.play(kupaID,1,1,1,0,1);
             }
             @Override
             public void onFinish() {
@@ -55,6 +51,7 @@ public class Klikanie extends AppCompatActivity {
         Intent start = new Intent(this, StartAktywnosc.class);
         startActivity(start);
         clock.stop();
+        clock.release();
     }
 
     public void koniec(){
@@ -64,6 +61,7 @@ public class Klikanie extends AppCompatActivity {
         StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
         startActivity(start);
         clock.stop();
+        clock.release();
     }
     @Override
     public void onBackPressed() { }

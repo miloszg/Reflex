@@ -23,7 +23,6 @@ import java.util.Random;
 public class Gyro extends AppCompatActivity {
 
     private int pozycja=0;
-    private SoundPool tick;
     private TextView textView;
     private ImageView imageView;
     private MediaPlayer clock;
@@ -44,7 +43,6 @@ public class Gyro extends AppCompatActivity {
         Random rand=new Random();
         pozycja=rand.nextInt(4);
         textView.setText(kierunki[pozycja]);
-        clock= MediaPlayer.create(this,R.raw.tick);
 
         switch(pozycja){
             case 0:
@@ -92,16 +90,15 @@ public class Gyro extends AppCompatActivity {
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }};
 
-        final int kupaID;
-        tick=new SoundPool(10, AudioManager.STREAM_MUSIC,1);
-        kupaID=tick.load(this,R.raw.tick,1);
 
+        clock= MediaPlayer.create(this,R.raw.tick_full);
+        StartAktywnosc.setMediaPlayer(clock);
 
         timer=new CountDownTimer(StartAktywnosc.timer,1000) {
             @Override
             public void onTick(long l) {
-                clock.start();
-                //tick.play(kupaID,1,1,1,0,1);
+
+
             }
             @Override
             public void onFinish() {
@@ -115,7 +112,6 @@ public class Gyro extends AppCompatActivity {
         super.onPostResume();
         sensorManager.registerListener(sensorEventListener,accelerometer,SensorManager.SENSOR_DELAY_NORMAL);
     }
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -130,6 +126,7 @@ public class Gyro extends AppCompatActivity {
         Intent start = new Intent(Gyro.this, StartAktywnosc.class);
         startActivity(start);
         clock.stop();
+        clock.release();
     }
 
     public void koniec(){
@@ -139,5 +136,6 @@ public class Gyro extends AppCompatActivity {
         Intent start = new Intent(Gyro.this, Wynik.class);
         startActivity(start);
         clock.stop();
+        clock.release();
     }
 }

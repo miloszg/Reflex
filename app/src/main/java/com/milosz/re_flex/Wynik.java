@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Wynik extends AppCompatActivity {
+
+    private MediaPlayer mp;
     private DataBase db;
     private Button button;
     private EditText edit;
@@ -38,8 +41,21 @@ public class Wynik extends AppCompatActivity {
         button=findViewById(R.id.buttonWynikowy);
         edit=findViewById(R.id.editText);
         gratulacje=findViewById(R.id.gratulacje);
-        gratulacje.setText("Gratulacje zdobyłeś " +liczba_punktow+ " punktów");
-
+        if(liczba_punktow>0) {
+            mp = MediaPlayer.create(this, R.raw.fanfare);
+            gratulacje.setText("Gratulacje zdobyłeś " +liczba_punktow+ " punktów");
+        } else{
+            mp = MediaPlayer.create(this,R.raw.failfare);
+            gratulacje.setText("Niestety zdobyłeś tylko " +liczba_punktow+ " punktów");
+        }
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.reset();
+                mp.release();
+            }
+        });
+        mp.start();
     }
     public void onClick(View view)
     {
