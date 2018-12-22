@@ -3,7 +3,9 @@ package com.milosz.re_flex;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +15,8 @@ import java.util.Random;
 
 public class Klikanie extends AppCompatActivity {
 
-    private MediaPlayer mp = new MediaPlayer();
+    private SoundPool tick;
+    private MediaPlayer clock;
     private Button button;
     private CountDownTimer timer;
 
@@ -28,11 +31,16 @@ public class Klikanie extends AppCompatActivity {
         button.setX(posX);
         button.setY(posY);
 
+        final int kupaID;
+        tick=new SoundPool(10, AudioManager.STREAM_MUSIC,1);
+        kupaID=tick.load(this,R.raw.tick,1);
+        clock= MediaPlayer.create(this,R.raw.tick);
+
         timer=new CountDownTimer(StartAktywnosc.timer,1000) {
             @Override
             public void onTick(long l) {
-                mp.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
-                mp.start();
+                clock.start();
+                //tick.play(kupaID,1,1,1,0,1);
             }
             @Override
             public void onFinish() {
@@ -46,6 +54,7 @@ public class Klikanie extends AppCompatActivity {
         StartAktywnosc.liczba_pkt_int++;
         Intent start = new Intent(this, StartAktywnosc.class);
         startActivity(start);
+        clock.stop();
     }
 
     public void koniec(){
@@ -54,6 +63,7 @@ public class Klikanie extends AppCompatActivity {
         Intent start = new Intent(this, Wynik.class);
         StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
         startActivity(start);
+        clock.stop();
     }
     @Override
     public void onBackPressed() { }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -21,13 +22,13 @@ public class Play extends AppCompatActivity {
     private String[] kolorki={"CZERWONY", "NIEBIESKI", "ZIELONY", "FIOLETOWY"};
     private String[] ksztalciki={"ROMB","KOLKO", "KWADRAT", "TROJKAT"};
     private String[] puste={"","","",""};
-
+    private SoundPool tick;
     //globalne
     private TextView dzialanie;
     private Button przycisk0 ,przycisk1, przycisk2, przycisk3;
     private CountDownTimer timer;
     private Random rand=new Random();
-    private MediaPlayer mp = new MediaPlayer();
+    private MediaPlayer clock;
 
     //Arraylisty do obsługi 4 panelowych mini-gier
     private ArrayList<Integer> odpowiedzi = new ArrayList<>();
@@ -128,18 +129,30 @@ public class Play extends AppCompatActivity {
         przyciski.add(przycisk2);
         przyciski.add(przycisk3);
         zagrajPonownie(findViewById(R.id.button6));
+        clock= MediaPlayer.create(this,R.raw.tick);
+
+        final int kupaID;
+        tick=new SoundPool(10, AudioManager.STREAM_MUSIC,1);
+        kupaID=tick.load(this,R.raw.tick,1);
+
 
         timer=new CountDownTimer(StartAktywnosc.timer,1000) {
             @Override
             public void onTick(long l) {
-                mp.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
-                mp.start();
+                clock.start();
+                //tick.play(kupaID,1,1,1,0,1);
             }
             @Override
             public void onFinish() {
                 koniec(findViewById(R.id.button6));
             }
         }.start();
+    }
+    public void nastepna() {
+        timer.cancel();
+        Intent start = new Intent(this, StartAktywnosc.class);
+        startActivity(start);
+        clock.stop();
     }
     public void koniec(View view)
     {
@@ -148,12 +161,9 @@ public class Play extends AppCompatActivity {
         StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
         Intent intent = new Intent(this, Wynik.class);
         startActivity(intent);
+        clock.stop();
     }
-    public void nastepna() {
-        timer.cancel();
-        Intent start = new Intent(this, StartAktywnosc.class);
-        startActivity(start);
-    }
+
 
     @Override
     public void onBackPressed() { }

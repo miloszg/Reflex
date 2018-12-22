@@ -8,6 +8,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,10 +23,10 @@ import java.util.Random;
 public class Gyro extends AppCompatActivity {
 
     private int pozycja=0;
-
+    private SoundPool tick;
     private TextView textView;
     private ImageView imageView;
-    private MediaPlayer mp = new MediaPlayer();
+    private MediaPlayer clock;
     private String[] kierunki={"GÓRA","DÓŁ", "PRAWO", "LEWO"};
     private CountDownTimer timer;
     private SensorManager sensorManager;
@@ -43,6 +44,8 @@ public class Gyro extends AppCompatActivity {
         Random rand=new Random();
         pozycja=rand.nextInt(4);
         textView.setText(kierunki[pozycja]);
+        clock= MediaPlayer.create(this,R.raw.tick);
+
         switch(pozycja){
             case 0:
                 imageView.setImageResource(R.drawable.up);
@@ -89,11 +92,16 @@ public class Gyro extends AppCompatActivity {
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }};
 
+        final int kupaID;
+        tick=new SoundPool(10, AudioManager.STREAM_MUSIC,1);
+        kupaID=tick.load(this,R.raw.tick,1);
+
+
         timer=new CountDownTimer(StartAktywnosc.timer,1000) {
             @Override
             public void onTick(long l) {
-//                mp.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
-//                mp.start();
+                clock.start();
+                //tick.play(kupaID,1,1,1,0,1);
             }
             @Override
             public void onFinish() {
@@ -121,6 +129,7 @@ public class Gyro extends AppCompatActivity {
         StartAktywnosc.liczba_pkt_int++;
         Intent start = new Intent(Gyro.this, StartAktywnosc.class);
         startActivity(start);
+        clock.stop();
     }
 
     public void koniec(){
@@ -129,5 +138,6 @@ public class Gyro extends AppCompatActivity {
         StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
         Intent start = new Intent(Gyro.this, Wynik.class);
         startActivity(start);
+        clock.stop();
     }
 }

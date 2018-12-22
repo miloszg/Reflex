@@ -1,6 +1,8 @@
 package com.milosz.re_flex;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import java.util.Random;
 import static android.support.v4.content.ContextCompat.startActivity;
 
 public class StartAktywnosc extends AppCompatActivity {
+    static MediaPlayer clock;
     static ArrayList<String> liczba_punktow=new ArrayList<>();
     static int liczba_pkt_int=0;
     static int timer=5100;
@@ -37,6 +40,12 @@ public class StartAktywnosc extends AppCompatActivity {
         if(liczba_pkt_int%5==0 & timer>1100){
             timer=timer-500;
         }
+
+        MediaPlayer mp= MediaPlayer.create(this,R.raw.correct_sound_effect);
+        int maxVolume = 50;
+        mp.setVolume(20,maxVolume);
+        mp.start();
+
     }
     public void wybieranie(){
         Random rand = new Random();
