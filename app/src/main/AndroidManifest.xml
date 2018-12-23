@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -32,7 +31,8 @@
         <activity android:name=".Fakty" />
         <activity android:name=".TestTabeliSQL" />
         <activity android:name=".Klikanie" />
-        <activity android:name=".StartAktywnosc"></activity>
+        <activity android:name=".StartAktywnosc" />
+        <activity android:name=".LosowyKolor"></activity>
     </application>
 
 </manifest>

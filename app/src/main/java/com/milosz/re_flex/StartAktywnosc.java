@@ -59,7 +59,7 @@ public class StartAktywnosc extends AppCompatActivity {
     }
     public void wybieranie(){
         Random rand = new Random();
-        int wybrana_minigra = rand.nextInt(3);
+        int wybrana_minigra = rand.nextInt(4);
             switch (wybrana_minigra) {
                 case 0:
                     Intent panel = new Intent(StartAktywnosc.this, Play.class);
@@ -72,6 +72,10 @@ public class StartAktywnosc extends AppCompatActivity {
                 case 2:
                     Intent klikanie = new Intent(StartAktywnosc.this, Gyro.class);
                     startActivity(klikanie);
+                    break;
+                case 3:
+                    Intent losowe = new Intent(StartAktywnosc.this, LosowyKolor.class);
+                    startActivity(losowe);
                     break;
                 default:
                     Log.i("Wystąpił", " błąd");
