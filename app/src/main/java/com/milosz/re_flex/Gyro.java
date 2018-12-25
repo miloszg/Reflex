@@ -26,7 +26,7 @@ public class Gyro extends AppCompatActivity {
     private TextView textView;
     private ImageView imageView;
     private MediaPlayer clock;
-    private String[] kierunki={"GÓRA","DÓŁ", "PRAWO", "LEWO"};
+    private String[] kierunki={"GORA","DOL", "PRAWO", "LEWO"};
     private CountDownTimer timer;
     private SensorManager sensorManager;
     private Sensor accelerometer;
@@ -76,11 +76,11 @@ public class Gyro extends AppCompatActivity {
                 getWindow().getDecorView().setBackgroundColor(Color.BLUE);
                 nastepna();
             } else if(event.values[1]< -3.0f && pozycja == 0){
-                //GÓRA
+                //GORA
                 getWindow().getDecorView().setBackgroundColor(Color.GREEN);
                 nastepna();
             } else if(event.values[1]> 9.0f && pozycja == 1){
-                //DÓŁ
+                //DOL
                 getWindow().getDecorView().setBackgroundColor(Color.YELLOW);
                 nastepna();
             }

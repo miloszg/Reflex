@@ -74,7 +74,7 @@ public class StartAktywnosc extends AppCompatActivity {
                     startActivity(klikanie);
                     break;
                 case 3:
-                    Intent losowe = new Intent(StartAktywnosc.this, LosowyKolor.class);
+                    Intent losowe = new Intent(StartAktywnosc.this, KoloryLosowe.class);
                     startActivity(losowe);
                     break;
                 default:

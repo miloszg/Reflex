@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent7);
                 return true;
             case R.id.ustawienia:
-                Intent intent8 = new Intent(this, LosowyKolor.class);
+                Intent intent8 = new Intent(this, ustawienia.class);
                 startActivity(intent8);
                 return true;
             case R.id.tabela:

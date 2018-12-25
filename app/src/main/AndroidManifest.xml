@@ -32,7 +32,7 @@
         <activity android:name=".TestTabeliSQL" />
         <activity android:name=".Klikanie" />
         <activity android:name=".StartAktywnosc" />
-        <activity android:name=".LosowyKolor"></activity>
+        <activity android:name=".KoloryLosowe"></activity>
     </application>
 
 </manifest>
