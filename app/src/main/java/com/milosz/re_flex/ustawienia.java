@@ -7,21 +7,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
-import android.widget.Toast;
-
+/** Ustawienia dzialania apkikacji. Uzytkownik ma mozliwosc wyciszyc dzwiek i wlaczyc tryb dla daltonistow.
+ * @author Miłosz Gustawski
+ * @version 1.0
+ */
 public class ustawienia extends AppCompatActivity {
 
+    private static AudioManager audioManager;
     private SwitchCompat switch1,switch2;
     private static boolean stanSwitch1,stanSwitch2;
     static SharedPreferences preferences;
-    AudioManager audioManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ustawienia);
-        //ustawienia muzyka off on
-        //zmiana koloru dla osob z daltonizmem
-        //glosnosc efektow dzwiekowych
         audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
         preferences=getSharedPreferences("PREFS",0);
         stanSwitch1=preferences.getBoolean("switch1",false);
@@ -40,7 +39,7 @@ public class ustawienia extends AppCompatActivity {
                 SharedPreferences.Editor editor=preferences.edit();
                 editor.putBoolean("switch1",stanSwitch1);
                 editor.apply();
-                disableSound(ustawienia.this);
+
             }
         });
         switch2.setOnClickListener(new View.OnClickListener() {
@@ -55,28 +54,27 @@ public class ustawienia extends AppCompatActivity {
             }
         });
     }
-    public void disableSound(Context context)
+    /** Wylacza dzwięk dla całej aplikacji.
+     */
+    public static void wylaczDzwiek()
     {
-
         if(stanSwitch1) {
 //            AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
             //amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, true);
-
+//            AudioManager mgr = (AudioManager)getSystemService(this.AUDIO_SERVICE);
+//            mgr.setStreamMute(AudioManager.STREAM_SYSTEM, true);
             audioManager.setMode(AudioManager.MODE_IN_CALL);
             audioManager.setStreamSolo(AudioManager.STREAM_VOICE_CALL, true);
-            Toast.makeText(context, "stan switcha "+stanSwitch1, Toast.LENGTH_SHORT).show();
         }else {
 //            AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 //            amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
             audioManager.setMode(AudioManager.MODE_NORMAL );
             audioManager.setStreamSolo(AudioManager.STREAM_VOICE_CALL, false);
-            Toast.makeText(context, "stan switcha "+stanSwitch1, Toast.LENGTH_SHORT).show();
+
         }
-    }
+    }/** Zmienia kolory w mini-grach tak aby byly widoczne dala osob cierpiacych na daltonizm.
+     */
     public void trybDaltonistow(){
-
-
-
-
     }
+
 }

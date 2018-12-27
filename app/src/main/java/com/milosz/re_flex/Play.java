@@ -1,24 +1,32 @@
 package com.milosz.re_flex;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.CountDownTimer;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
-
+/** Klasa obslugujaca wszystkie mini-gry z 4-panelową opcją wyboru.
+ * mini gry  to:
+ * -wybor koloru
+ * -dzialanie matematyczne
+ * wybranie kszlaltu geometrycznego
+ * @author Miłosz Gustawski
+ * @version 1.0
+ */
 public class Play extends AppCompatActivity {
-    private DataBase db;
+
+
+    //Tablice Stringow. Napisy wyswietlaja sie na odpowiednim panelu wyboru
     private String[] kolorki={"CZERWONY", "NIEBIESKI", "ZIELONY", "FIOLETOWY"};
     private String[] ksztalciki={"ROMB","KOLKO", "KWADRAT", "TROJKAT"};
     private String[] puste={"","","",""};
@@ -39,6 +47,8 @@ public class Play extends AppCompatActivity {
     private int liczbaPytan=rand.nextInt(3);
     private int pozycjaDobrejOdpowiedzi;
 
+    /** generuje pytanie z dzialaniem matematycznym
+     */
     public void generowaniePytanMatma(){
         int a=rand.nextInt(11);
         int b=rand.nextInt(11);
@@ -57,6 +67,8 @@ public class Play extends AppCompatActivity {
             }
         }
     }
+    /** generuje pytanie z wybraniem danego koloru
+     */
     public void generowaniePytanKolor(){
         // 1- CZER, 2-NIEB, 3-ZIEL, 4-FIOLET
         pozycjaDobrejOdpowiedzi=rand.nextInt(4);
@@ -65,8 +77,9 @@ public class Play extends AppCompatActivity {
         dzialanie.setText(kolorki[pozycjaDobrejOdpowiedzi]);
 
     }
+    /** generuje pytanie z wybraniem danego ksztaltu
+     */
     public void generowaniePytanKszalt(){
-        // 1- CZER, 2-NIEB, 3-ZIEL, 4-FIOLET
         char romb='\u25B1';
         char kolko='\u25EF';
         char kwadrat='\u25A1';
@@ -79,6 +92,8 @@ public class Play extends AppCompatActivity {
         ksztalty.add(trojkat);
         dzialanie.setText(ksztalciki[pozycjaDobrejOdpowiedzi]);
     }
+    /** resetowanie calej mini-gry
+     */
     public void zagrajPonownie(View view) {
 
         if (liczbaPytan % 3 == 0)
@@ -92,6 +107,8 @@ public class Play extends AppCompatActivity {
         }
         przycisk0.setEnabled(true);
     }
+    /** klikniecie dobrego przycisku doda nam punkt, a zla odpowiedz zakonczy gre
+     */
     public void wybierz(View view){
         if (Integer.toString(pozycjaDobrejOdpowiedzi).equals(view.getTag().toString())){
             StartAktywnosc.liczba_pkt_int++;
@@ -101,6 +118,8 @@ public class Play extends AppCompatActivity {
             koniec(findViewById(R.id.button6));
         }
     }
+    /** generuje kolejne pytanie
+     */
     public void kolejnePytanie(ArrayList<?> arrayList){
         if(liczbaPytan%3==0)
             generowaniePytanKolor();
@@ -130,6 +149,8 @@ public class Play extends AppCompatActivity {
         przyciski.add(przycisk3);
         zagrajPonownie(findViewById(R.id.button6));
 
+
+
         clock= MediaPlayer.create(this,R.raw.tick_full);
         StartAktywnosc.setMediaPlayer(clock);
 
@@ -143,7 +164,12 @@ public class Play extends AppCompatActivity {
                 koniec(findViewById(R.id.button6));
             }
         }.start();
+
     }
+    /** W wypadku wybrania dobrej odpowiedzi przechodzimy do kolejnego pytania.
+     * Czas na wykonanie zadania jest zatrzymywany i zatrzymywany jest także
+     * plik audio z tykajacym zegarem
+     */
     public void nastepna() {
         timer.cancel();
         Intent start = new Intent(this, StartAktywnosc.class);
@@ -151,6 +177,10 @@ public class Play extends AppCompatActivity {
         clock.stop();
         clock.release();
     }
+    /** W wypadku wybrania zlej odpowiedzi gra jest przerywana przechodzimy do aktywnosci "WYNIK".
+     * Czas na wykonanie zadania jest zatrzymywany i zatrzymywany jest także
+     * plik audio z tykajacym zegarem
+     */
     public void koniec(View view)
     {
         timer.cancel();
@@ -161,7 +191,6 @@ public class Play extends AppCompatActivity {
         clock.stop();
         clock.release();
     }
-
 
     @Override
     public void onBackPressed() { }

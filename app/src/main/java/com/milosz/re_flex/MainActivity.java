@@ -2,20 +2,19 @@ package com.milosz.re_flex;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-
+/** MENU główne aplikacji z ktorej mozemy wybrac mniejsze menu z paskiem gdzie mozemy przejsc do zasad gry, ustawien i tablicy wynikow
+ * @author Miłosz Gustawski
+ * @version 1.0
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
     private Context context=this;
     public Context getContext() {
         return context;
@@ -27,7 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         menuInflater.inflate(R.menu.main_menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    /** menu poboczne ktore wysuwamy za pomoca klikniecia 3 kropek w prawym gornym rogu
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
          super.onOptionsItemSelected(item);

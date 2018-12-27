@@ -17,7 +17,11 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.util.Random;
-
+/** Wyswietlenie jednego z faktów po zakończeniu rozgrywki.
+ * Ma ona na celu edukacje użytkownika na temat demencji
+ * @author Miłosz Gustawski
+ * @version 1.0
+ */
 public class Fakty extends AppCompatActivity {
 
     private TextView topText,bottomText;
@@ -35,10 +39,14 @@ public class Fakty extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    /** powrot do menu głównego
+     */
     public void onClick(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+    /** wyswietla fakt z stringu umieszczonego w pliku XML
+     */
     public void drukuj() throws IOException {
         String fakty=getString(R.string.fakty);
         BufferedReader reader = new BufferedReader(new StringReader(fakty));
@@ -51,7 +59,5 @@ public class Fakty extends AppCompatActivity {
         bottomText.setText(s[liczba+1]);
     }
     @Override
-    public void onBackPressed() {
-
-    }
+    public void onBackPressed() { }
 }

@@ -6,17 +6,16 @@ import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
-
+/** W mini-grze mamy mozliwosc wybrania 3 kolorow na podstawie wyswietlanego tekstu.
+ * Gra jest podchwytliwa poniewaz kolor tekstu moze sie zmieniac.
+ * np. zostanie wyswietlony napis: CZERWONY, ale sam napis będzie miał kolor niebieski
+ * @author Miłosz Gustawski
+ * @version 1.0
+ */
 public class KoloryLosowe extends AppCompatActivity {
 
         private MediaPlayer clock;
@@ -55,6 +54,8 @@ public class KoloryLosowe extends AppCompatActivity {
             }.start();
 
         }
+    /** generuje pozycje i dobiera kolor do wybrania przez uzytkownika
+     */
         public void generate(){
             int los=rand.nextInt(3);
             wybierany.setText(colors_string[los]);
@@ -92,6 +93,8 @@ public class KoloryLosowe extends AppCompatActivity {
             setColor(color2,string_odpowiedzi,1);
             setColor(color3,string_odpowiedzi,2);
         }
+    /** ustrawia kolor polecenia
+     */
         public void setColor(Button button,String[] string_odpowiedzi,int numer){
             if(string_odpowiedzi[numer]=="CZERWONY") {
                 button.setBackgroundColor(Color.RED);
@@ -101,6 +104,23 @@ public class KoloryLosowe extends AppCompatActivity {
                 button.setBackgroundColor(Color.YELLOW);
             }
         }
+
+    /** funkcja prewentcyjna majaca na celu wyeliminowanie powtarzania sie wystepowania danego koloru wsrod odpowiedzi
+     */
+        public int wygeneruj_liczby(int dobra,int zla){
+            if(dobra==0){
+                zla = 1;
+            } else if (dobra==1){
+                zla = 2;
+            } else if(dobra==2) {
+                zla = 0;
+            }
+            return zla;
+        }
+    /** W wypadku wybrania dobrej odpowiedzi przechodzimy do kolejnego pytania.
+     * Czas na wykonanie zadania jest zatrzymywany i zatrzymywany jest także
+     * plik audio z tykajacym zegarem
+     */
         public void wybierz(View view){
             if (Integer.toString(pozycjaDobrejOdpowiedzi).equals(view.getTag().toString())){
                 timer.cancel();
@@ -114,16 +134,11 @@ public class KoloryLosowe extends AppCompatActivity {
                 koniec(findViewById(R.id.color1));
             }
         }
-        public int wygeneruj_liczby(int dobra,int zla){
-            if(dobra==0){
-                zla = 1;
-            } else if (dobra==1){
-                zla = 2;
-            } else if(dobra==2) {
-                zla = 0;
-            }
-            return zla;
-        }
+
+    /** W wypadku wybrania zlej odpowiedzi gra jest przerywana przechodzimy do aktywnosci "WYNIK".
+     * Czas na wykonanie zadania jest zatrzymywany i zatrzymywany jest także
+     * plik audio z tykajacym zegarem
+     */
         public void koniec(View view){
             timer.cancel();
             StartAktywnosc.timer=5100;

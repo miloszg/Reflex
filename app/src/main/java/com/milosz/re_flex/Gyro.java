@@ -19,9 +19,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
-
+/**Na podstawie polecenia uzytkownik ma pochylic telefon w odpowiednim kierunku.
+ * @author Miłosz Gustawski
+ * @version 1.0
+ */
 public class Gyro extends AppCompatActivity {
-
     private int pozycja=0;
     private TextView textView;
     private ImageView imageView;
@@ -89,8 +91,6 @@ public class Gyro extends AppCompatActivity {
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }};
-
-
         clock= MediaPlayer.create(this,R.raw.tick_full);
         StartAktywnosc.setMediaPlayer(clock);
 
@@ -120,6 +120,10 @@ public class Gyro extends AppCompatActivity {
     @Override
     public void onBackPressed() { }
 
+    /** W wypadku wybrania dobrej odpowiedzi przechodzimy do kolejnego pytania.
+     * Czas na wykonanie zadania jest zatrzymywany i zatrzymywany jest także
+     * plik audio z tykajacym zegarem
+     */
     public void nastepna(){
         timer.cancel();
         StartAktywnosc.liczba_pkt_int++;
@@ -128,7 +132,10 @@ public class Gyro extends AppCompatActivity {
         clock.stop();
         clock.release();
     }
-
+    /** W wypadku wybrania zlej odpowiedzi gra jest przerywana przechodzimy do aktywnosci "WYNIK".
+     * Czas na wykonanie zadania jest zatrzymywany i zatrzymywany jest także
+     * plik audio z tykajacym zegarem
+     */
     public void koniec(){
         timer.cancel();
         StartAktywnosc.timer=5100;

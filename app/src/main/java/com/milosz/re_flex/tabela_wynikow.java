@@ -1,28 +1,16 @@
 package com.milosz.re_flex;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
-
+/** Tablica pokazujaca wyniki uzyskane w grze razem z nazwa uzytkownika.
+ * @author Miłosz Gustawski
+ * @version 1.0
+ */
 public class tabela_wynikow extends AppCompatActivity {
 
     private int dlugosc;
@@ -34,7 +22,8 @@ public class tabela_wynikow extends AppCompatActivity {
         setContentView(R.layout.activity_tabela_wynikow);
         zrobListe();
     }
-
+    /** generuje tablice wynikow
+     */
     public void zrobListe() {
         myListView=findViewById(R.id.lista);
         dlugosc=Wynik.lista_nazw.size();
