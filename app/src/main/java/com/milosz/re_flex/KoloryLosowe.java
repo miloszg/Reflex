@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.Random;
 /** W mini-grze mamy mozliwosc wybrania 3 kolorow na podstawie wyswietlanego tekstu.
  * Gra jest podchwytliwa poniewaz kolor tekstu moze sie zmieniac.
- * np. zostanie wyswietlony napis: CZERWONY, ale sam napis będzie miał kolor niebieski
+ * np. zostanie wyswietlony napis: ZIELONY, ale sam napis będzie miał kolor niebieski
  * @author Miłosz Gustawski
  * @version 1.0
  */
@@ -20,14 +20,13 @@ public class KoloryLosowe extends AppCompatActivity {
 
         private MediaPlayer clock;
         private CountDownTimer timer;
-        private String[] colors_string={"CZERWONY", "NIEBIESKI", "ZOLTY"};
+        private String[] colors_string={"CZERWONY", "NIEBIESKI", "ZOŁTY"};
         private String[] string_odpowiedzi=new String[3];
         private Random rand;
         private int pozycjaDobrejOdpowiedzi;
         private int dobry_numer_koloru;
         private int temp_pozycja;
         private int temp;
-        private int bledna=0;
         private TextView wybierany;
         private Button color1, color2, color3;
         @Override
@@ -40,9 +39,14 @@ public class KoloryLosowe extends AppCompatActivity {
             color3=findViewById(R.id.color3);
             rand=new Random();
             generate();
-
+            if(ustawienia.stanSwitch2) {
+                colors_string[0]="ZIELONY";
+                colors_string[2]="FIOLETOWY";
+            }
             clock=MediaPlayer.create(this,R.raw.tick_full);
-            StartAktywnosc.setMediaPlayer(clock);
+            if(!ustawienia.stanSwitch1) {
+                StartAktywnosc.setMediaPlayer(clock);
+            }
             timer=new CountDownTimer(StartAktywnosc.timer,1000) {
                 @Override
                 public void onTick(long l) {
@@ -97,11 +101,11 @@ public class KoloryLosowe extends AppCompatActivity {
      */
         public void setColor(Button button,String[] string_odpowiedzi,int numer){
             if(string_odpowiedzi[numer]=="CZERWONY") {
-                button.setBackgroundColor(Color.RED);
+                button.setBackgroundColor(Color.RED); //GREEN
             } else if(string_odpowiedzi[numer]=="NIEBIESKI") {
                 button.setBackgroundColor(Color.BLUE);
             } else {
-                button.setBackgroundColor(Color.YELLOW);
+                button.setBackgroundColor(Color.YELLOW); //MAGENTA
             }
         }
 
@@ -127,8 +131,10 @@ public class KoloryLosowe extends AppCompatActivity {
                 StartAktywnosc.liczba_pkt_int++;
                 Intent start = new Intent(this, StartAktywnosc.class);
                 startActivity(start);
-                clock.stop();
-                clock.release();
+                if(!ustawienia.stanSwitch1) {
+                    clock.stop();
+                    clock.release();
+                }
             }
             else{
                 koniec(findViewById(R.id.color1));
@@ -145,8 +151,10 @@ public class KoloryLosowe extends AppCompatActivity {
             Intent start = new Intent(this, Wynik.class);
             StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
             startActivity(start);
-            clock.stop();
-            clock.release();
+            if(!ustawienia.stanSwitch1) {
+                clock.stop();
+                clock.release();
+            }
         }
         @Override
         public void onBackPressed() { }

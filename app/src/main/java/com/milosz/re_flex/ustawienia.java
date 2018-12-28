@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
+import android.widget.Toast;
+
 /** Ustawienia dzialania apkikacji. Uzytkownik ma mozliwosc wyciszyc dzwiek i wlaczyc tryb dla daltonistow.
  * @author Miłosz Gustawski
  * @version 1.0
@@ -15,7 +17,7 @@ public class ustawienia extends AppCompatActivity {
 
     private static AudioManager audioManager;
     private SwitchCompat switch1,switch2;
-    private static boolean stanSwitch1,stanSwitch2;
+    public static boolean stanSwitch1,stanSwitch2;
     static SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class ustawienia extends AppCompatActivity {
                 SharedPreferences.Editor editor=preferences.edit();
                 editor.putBoolean("switch1",stanSwitch1);
                 editor.apply();
+                wylaczDzwiek();
 
             }
         });
@@ -51,30 +54,27 @@ public class ustawienia extends AppCompatActivity {
                 editor.putBoolean("switch2",stanSwitch2);
                 editor.apply();
                 trybDaltonistow();
+
             }
         });
     }
     /** Wylacza dzwięk dla całej aplikacji.
      */
-    public static void wylaczDzwiek()
+    public void wylaczDzwiek()
     {
         if(stanSwitch1) {
-//            AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-            //amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, true);
-//            AudioManager mgr = (AudioManager)getSystemService(this.AUDIO_SERVICE);
-//            mgr.setStreamMute(AudioManager.STREAM_SYSTEM, true);
-            audioManager.setMode(AudioManager.MODE_IN_CALL);
-            audioManager.setStreamSolo(AudioManager.STREAM_VOICE_CALL, true);
+            Toast.makeText(this, "MUZYKA WYLACZONA: "+stanSwitch1, Toast.LENGTH_SHORT).show();
         }else {
-//            AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-//            amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
-            audioManager.setMode(AudioManager.MODE_NORMAL );
-            audioManager.setStreamSolo(AudioManager.STREAM_VOICE_CALL, false);
-
+            Toast.makeText(this, "MUZYKA WYLACZONA: "+stanSwitch1, Toast.LENGTH_SHORT).show();
         }
     }/** Zmienia kolory w mini-grach tak aby byly widoczne dala osob cierpiacych na daltonizm.
      */
     public void trybDaltonistow(){
+        if(stanSwitch2) {
+            Toast.makeText(this, "TRYB DLA DALTONISTOW WLACZONY: "+stanSwitch1, Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "TRYB DLA DALTONISTOW WYLACZONY: "+stanSwitch1, Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

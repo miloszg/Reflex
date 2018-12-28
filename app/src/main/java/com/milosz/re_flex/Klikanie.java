@@ -35,7 +35,9 @@ public class Klikanie extends AppCompatActivity {
 
 
         clock=MediaPlayer.create(this,R.raw.tick_full);
-        StartAktywnosc.setMediaPlayer(clock);
+        if(!ustawienia.stanSwitch1) {
+            StartAktywnosc.setMediaPlayer(clock);
+        }
         timer=new CountDownTimer(StartAktywnosc.timer,1000) {
             @Override
             public void onTick(long l) {
@@ -56,8 +58,10 @@ public class Klikanie extends AppCompatActivity {
         StartAktywnosc.liczba_pkt_int++;
         Intent start = new Intent(this, StartAktywnosc.class);
         startActivity(start);
-        clock.stop();
-        clock.release();
+        if(!ustawienia.stanSwitch1) {
+            clock.stop();
+            clock.release();
+        }
     }
     /** W wypadku wybrania zlej odpowiedzi gra jest przerywana przechodzimy do aktywnosci "WYNIK".
      * Czas na wykonanie zadania jest zatrzymywany i zatrzymywany jest także
@@ -69,8 +73,10 @@ public class Klikanie extends AppCompatActivity {
         Intent start = new Intent(this, Wynik.class);
         StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
         startActivity(start);
-        clock.stop();
-        clock.release();
+        if(!ustawienia.stanSwitch1) {
+            clock.stop();
+            clock.release();
+        }
     }
     @Override
     public void onBackPressed() { }

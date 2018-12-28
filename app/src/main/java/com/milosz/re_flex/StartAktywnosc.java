@@ -31,15 +31,17 @@ public class StartAktywnosc extends AppCompatActivity {
         mp= MediaPlayer.create(this,R.raw.correct_sound_effect);
         int maxVolume = 50;
         mp.setVolume(20,maxVolume);
-        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mpi) {
-                mpi.reset();
-                mpi.release();
-                mp = null;
-            }
-        });
-        mp.start();
+        if(!ustawienia.stanSwitch1) {
+            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mpi) {
+                    mpi.reset();
+                    mpi.release();
+                    mp = null;
+                }
+            });
+            mp.start();
+        }
     }
     public void wybieranie(){
         Random rand = new Random();

@@ -92,8 +92,9 @@ public class Gyro extends AppCompatActivity {
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }};
         clock= MediaPlayer.create(this,R.raw.tick_full);
-        StartAktywnosc.setMediaPlayer(clock);
-
+        if(!ustawienia.stanSwitch1) {
+            StartAktywnosc.setMediaPlayer(clock);
+        }
         timer=new CountDownTimer(StartAktywnosc.timer,1000) {
             @Override
             public void onTick(long l) {
@@ -129,8 +130,10 @@ public class Gyro extends AppCompatActivity {
         StartAktywnosc.liczba_pkt_int++;
         Intent start = new Intent(Gyro.this, StartAktywnosc.class);
         startActivity(start);
-        clock.stop();
-        clock.release();
+        if(!ustawienia.stanSwitch1) {
+            clock.stop();
+            clock.release();
+        }
     }
     /** W wypadku wybrania zlej odpowiedzi gra jest przerywana przechodzimy do aktywnosci "WYNIK".
      * Czas na wykonanie zadania jest zatrzymywany i zatrzymywany jest także
@@ -142,7 +145,9 @@ public class Gyro extends AppCompatActivity {
         StartAktywnosc.liczba_punktow.add(String.valueOf(StartAktywnosc.liczba_pkt_int));
         Intent start = new Intent(Gyro.this, Wynik.class);
         startActivity(start);
-        clock.stop();
-        clock.release();
+        if(!ustawienia.stanSwitch1) {
+            clock.stop();
+            clock.release();
+        }
     }
 }

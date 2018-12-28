@@ -31,20 +31,26 @@ public class Wynik extends AppCompatActivity {
         edit=findViewById(R.id.editText);
         gratulacje=findViewById(R.id.gratulacje);
         if(liczba_punktow>0) {
-            mp = MediaPlayer.create(this, R.raw.fanfare);
+            if(!ustawienia.stanSwitch1) {
+                mp = MediaPlayer.create(this, R.raw.fanfare);
+            }
             gratulacje.setText("Gratulacje zdobyłeś " +liczba_punktow+ " punktów");
         } else{
-            mp = MediaPlayer.create(this,R.raw.failfare);
+            if(!ustawienia.stanSwitch1) {
+                mp = MediaPlayer.create(this, R.raw.failfare);
+            }
             gratulacje.setText("Niestety zdobyłeś tylko " +liczba_punktow+ " punktów");
         }
-        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                mp.reset();
-                mp.release();
-            }
-        });
-        mp.start();
+        if(!ustawienia.stanSwitch1) {
+            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    mp.reset();
+                    mp.release();
+                }
+            });
+            mp.start();
+        }
     }
     public void onClick(View view)
     {
