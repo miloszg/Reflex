@@ -27,7 +27,7 @@ public class Play extends AppCompatActivity {
 
 
     //Tablice Stringow. Napisy wyswietlaja sie na odpowiednim panelu wyboru
-    private String[] kolorki={"CZERWONY", "NIEBIESKI", "ZIELONY", "FIOLETOWY"};
+    public String[] kolorki={"CZERWONY", "NIEBIESKI", "ZIELONY", "FIOLETOWY"};
     private String[] ksztalciki={"ROMB","KOLKO", "KWADRAT", "TROJKAT"};
     private String[] puste={"","","",""};
 
@@ -46,6 +46,7 @@ public class Play extends AppCompatActivity {
 
     private int liczbaPytan=rand.nextInt(3);
     private int pozycjaDobrejOdpowiedzi;
+    private android.content.res.Resources res;
 
     /** generuje pytanie z dzialaniem matematycznym
      */
@@ -70,7 +71,7 @@ public class Play extends AppCompatActivity {
     /** generuje pytanie z wybraniem danego koloru
      */
     public void generowaniePytanKolor(){
-        // 1- CZER, 2-NIEB, 3-ZIEL, 4-FIOLET
+        // 1- CZER / BRAZOWY, 2-NIEB, 3-ZIEL, 4-FIOLET
         pozycjaDobrejOdpowiedzi=rand.nextInt(4);
         kolory.clear();
         kolory.addAll(Arrays.asList(puste));
@@ -147,10 +148,13 @@ public class Play extends AppCompatActivity {
         przyciski.add(przycisk1);
         przyciski.add(przycisk2);
         przyciski.add(przycisk3);
+        res = getResources();
+        int brown=res.getColor(R.color.brown);
+        if(ustawienia.stanSwitch2) {
+            kolorki[0]="BRAZOWY";
+            przycisk0.setBackgroundColor(brown);
+        }
         zagrajPonownie(findViewById(R.id.button6));
-
-
-
         clock= MediaPlayer.create(this,R.raw.tick_full);
         if(!ustawienia.stanSwitch1) {
             StartAktywnosc.setMediaPlayer(clock);

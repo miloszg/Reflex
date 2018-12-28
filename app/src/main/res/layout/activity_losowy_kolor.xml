@@ -52,7 +52,7 @@
 
     <TextView
         android:id="@+id/wybierany"
-        android:layout_width="277dp"
+        android:layout_width="283dp"
         android:layout_height="78dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
@@ -62,7 +62,7 @@
         android:layout_marginBottom="19dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="CZERWONY"
+        android:text="FIOLETOWY"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/color1"

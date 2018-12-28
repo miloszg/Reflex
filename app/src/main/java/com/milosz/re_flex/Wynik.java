@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 /** Wyświetlanie wyników po zakonczonej rozgrywce z mozliwoscia podania nazwy ktora sie pokaze z wynikiem w tablicy wynikow.
  * @author Miłosz Gustawski
@@ -54,10 +57,16 @@ public class Wynik extends AppCompatActivity {
     }
     public void onClick(View view)
     {
+
         String name=edit.getText().toString();
-        lista_nazw.add(name);
-        Intent fakty = new Intent(this, Fakty.class);
-        startActivity(fakty);
+        if(TextUtils.isEmpty(name)) {
+            Toast.makeText(this, "Proszę podać prawidłową nazwę", Toast.LENGTH_SHORT).show();
+            return;
+        }else {
+            lista_nazw.add(name);
+            Intent fakty = new Intent(this, Fakty.class);
+            startActivity(fakty);
+        }
     }
     @Override
     public void onBackPressed() { }

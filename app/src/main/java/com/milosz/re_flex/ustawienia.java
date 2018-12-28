@@ -71,9 +71,9 @@ public class ustawienia extends AppCompatActivity {
      */
     public void trybDaltonistow(){
         if(stanSwitch2) {
-            Toast.makeText(this, "TRYB DLA DALTONISTOW WLACZONY: "+stanSwitch1, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "TRYB DLA DALTONISTOW WLACZONY: "+stanSwitch2, Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(this, "TRYB DLA DALTONISTOW WYLACZONY: "+stanSwitch1, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "TRYB DLA DALTONISTOW WYLACZONY: "+stanSwitch2, Toast.LENGTH_SHORT).show();
         }
     }
 

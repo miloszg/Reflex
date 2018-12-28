@@ -20,7 +20,7 @@ public class KoloryLosowe extends AppCompatActivity {
 
         private MediaPlayer clock;
         private CountDownTimer timer;
-        private String[] colors_string={"CZERWONY", "NIEBIESKI", "ZOŁTY"};
+        public String[] colors_string={"CZERWONY", "NIEBIESKI", "ZOŁTY"};
         private String[] string_odpowiedzi=new String[3];
         private Random rand;
         private int pozycjaDobrejOdpowiedzi;
@@ -29,6 +29,14 @@ public class KoloryLosowe extends AppCompatActivity {
         private int temp;
         private TextView wybierany;
         private Button color1, color2, color3;
+        private android.content.res.Resources res;
+
+        //kolory
+        int green;
+        int red;
+        int blue;
+        int violet;
+        int yellow;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -38,11 +46,17 @@ public class KoloryLosowe extends AppCompatActivity {
             color2=findViewById(R.id.color2);
             color3=findViewById(R.id.color3);
             rand=new Random();
-            generate();
+            res=getResources();
+            green=res.getColor(R.color.green);
+            red=res.getColor(R.color.red);
+            blue=res.getColor(R.color.blue);
+            violet=res.getColor(R.color.violet);
+            yellow=res.getColor(R.color.yellow);
             if(ustawienia.stanSwitch2) {
-                colors_string[0]="ZIELONY";
-                colors_string[2]="FIOLETOWY";
+                colors_string= new String[]{"ZIELONY", "NIEBIESKI", "FIOLETOWY"};
             }
+            generate();
+
             clock=MediaPlayer.create(this,R.raw.tick_full);
             if(!ustawienia.stanSwitch1) {
                 StartAktywnosc.setMediaPlayer(clock);
@@ -69,13 +83,21 @@ public class KoloryLosowe extends AppCompatActivity {
             int losowy_numer_koloru_tekstu=rand.nextInt(3);
             switch (losowy_numer_koloru_tekstu){
                 case 0:
-                    wybierany.setTextColor(Color.RED);
+                    if (ustawienia.stanSwitch2) {
+                        wybierany.setTextColor(green);
+                    } else {
+                        wybierany.setTextColor(red);
+                    }
                     break;
                 case 1:
-                    wybierany.setTextColor(Color.BLUE);
+                    wybierany.setTextColor(blue);
                     break;
                 case 2:
-                    wybierany.setTextColor(Color.YELLOW);
+                    if (ustawienia.stanSwitch2) {
+                        wybierany.setTextColor(violet);
+                    } else {
+                        wybierany.setTextColor(yellow);
+                    }
                     break;
             }
 
@@ -100,12 +122,20 @@ public class KoloryLosowe extends AppCompatActivity {
     /** ustrawia kolor polecenia
      */
         public void setColor(Button button,String[] string_odpowiedzi,int numer){
-            if(string_odpowiedzi[numer]=="CZERWONY") {
-                button.setBackgroundColor(Color.RED); //GREEN
+            if(string_odpowiedzi[numer]=="CZERWONY" || string_odpowiedzi[numer]=="ZIELONY") {
+                if (ustawienia.stanSwitch2) {
+                    button.setBackgroundColor(green);
+                } else {
+                    button.setBackgroundColor(red);
+                }
             } else if(string_odpowiedzi[numer]=="NIEBIESKI") {
-                button.setBackgroundColor(Color.BLUE);
+                button.setBackgroundColor(blue);
             } else {
-                button.setBackgroundColor(Color.YELLOW); //MAGENTA
+                if (ustawienia.stanSwitch2) {
+                    button.setBackgroundColor(violet);
+                } else {
+                    button.setBackgroundColor(yellow);
+                }
             }
         }
 
