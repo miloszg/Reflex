@@ -28,7 +28,10 @@ public class Gyro extends AppCompatActivity {
     private TextView textView;
     private ImageView imageView;
     private MediaPlayer clock;
-    private String[] kierunki={"GORA","DOL", "PRAWO", "LEWO"};
+
+    /** Tablica przechowująca kierunki wyświetlane w poleceniu */
+    public String[] kierunki={"GÓRA" ,"DÓŁ" ,"PRAWO" ,"LEWO" };
+
     private CountDownTimer timer;
     private SensorManager sensorManager;
     private Sensor accelerometer;
@@ -98,8 +101,6 @@ public class Gyro extends AppCompatActivity {
         timer=new CountDownTimer(StartAktywnosc.timer,1000) {
             @Override
             public void onTick(long l) {
-
-
             }
             @Override
             public void onFinish() {

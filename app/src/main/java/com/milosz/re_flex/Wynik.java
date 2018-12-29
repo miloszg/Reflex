@@ -23,7 +23,10 @@ public class Wynik extends AppCompatActivity {
     private Button button;
     private EditText edit;
     private TextView gratulacje;
-    static ArrayList<String> lista_nazw=new ArrayList<>();
+
+    /** Lista przechowująca nazwy użytkowników */
+    public static ArrayList<String> lista_nazw=new ArrayList<>();
+
     int liczba_punktow=Integer.valueOf(StartAktywnosc.liczba_punktow.get(StartAktywnosc.liczba_punktow.size()-1));
     @Override
     protected void onCreate(Bundle savedInstanceState) {

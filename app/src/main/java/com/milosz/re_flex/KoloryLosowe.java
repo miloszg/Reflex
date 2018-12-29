@@ -20,18 +20,32 @@ public class KoloryLosowe extends AppCompatActivity {
 
         private MediaPlayer clock;
         private CountDownTimer timer;
-        public String[] colors_string={"CZERWONY", "NIEBIESKI", "ZOŁTY"};
-        private String[] string_odpowiedzi=new String[3];
+
+        /**  Tablica przechowująca kolory do wyświetlania w poleceniu */
+        public String[] colors_string={"CZERWONY", "NIEBIESKI", "ŻÓŁTY"};
+
+        /** Tablica przechowująca odpowiedzi */
+        public String[] string_odpowiedzi=new String[3];
+
         private Random rand;
-        private int pozycjaDobrejOdpowiedzi;
-        private int dobry_numer_koloru;
-        private int temp_pozycja;
-        private int temp;
+
+        /** Losowa pozycja poprawnej odpowiedzi */
+        public int pozycjaDobrejOdpowiedzi;
+
+        /** Numer koloru, ktory się wyświetla w poleceniu  */
+        public int dobry_numer_koloru;
+
+        /** Pozycja błędnej odpowiedzi */
+        public int temp_pozycja;
+
+        /** Numer błędnego koloru */
+        public int temp;
+
         private TextView wybierany;
         private Button color1, color2, color3;
         private android.content.res.Resources res;
 
-        //kolory
+        //Kolory do wyświetlania zdefiniowanych w colors.xml
         int green;
         int red;
         int blue;

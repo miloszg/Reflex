@@ -15,9 +15,16 @@ import java.util.Random;
 public class StartAktywnosc extends AppCompatActivity {
 
     static MediaPlayer mp;
-    static ArrayList<String> liczba_punktow=new ArrayList<>();
-    static int liczba_pkt_int=0;
-    static int timer=5100;
+
+    /** Lista punktów graczy */
+    public static ArrayList<String> liczba_punktow=new ArrayList<>();
+
+    /** Liczba punktów, którą uzyskał gracz */
+    public static int liczba_pkt_int=0;
+
+    /** Czas trwania mini-gry. Wstepnie 5sek, ale z postępem ten czas maleje */
+    public static int timer=5100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

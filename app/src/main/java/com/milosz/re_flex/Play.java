@@ -27,9 +27,14 @@ public class Play extends AppCompatActivity {
 
 
     //Tablice Stringow. Napisy wyswietlaja sie na odpowiednim panelu wyboru
+    /** Tablica do mini-gry z wybieraniem kolorów */
     public String[] kolorki={"CZERWONY", "NIEBIESKI", "ZIELONY", "FIOLETOWY"};
-    private String[] ksztalciki={"ROMB","KOLKO", "KWADRAT", "TROJKAT"};
-    private String[] puste={"","","",""};
+
+    /** Tablica do mini-gry z wybieraniem wybieraniem poprawnego ksztaltu */
+    public String[] ksztalciki={"ROMB","KÓŁKO", "KWADRAT", "TRÓJKAT"};
+
+    /** Tablica do mini-gry z działaniem mamtematycznym */
+    public String[] puste={"","","",""};
 
     //globalne
     private TextView dzialanie;
@@ -44,8 +49,12 @@ public class Play extends AppCompatActivity {
     private ArrayList<String> kolory = new ArrayList<>();
     private ArrayList<Character> ksztalty = new ArrayList<>();
 
-    private int liczbaPytan=rand.nextInt(3);
-    private int pozycjaDobrejOdpowiedzi;
+    /** Losowa liczba do wybierania mini-gry  */
+    public int liczba_los=rand.nextInt(3);
+
+    /** Pozycja na której znajduję się poprawna odpowiedz */
+    public int pozycjaDobrejOdpowiedzi;
+
     private android.content.res.Resources res;
 
     /** generuje pytanie z dzialaniem matematycznym
@@ -97,9 +106,9 @@ public class Play extends AppCompatActivity {
      */
     public void zagrajPonownie(View view) {
 
-        if (liczbaPytan % 3 == 0)
+        if (liczba_los % 3 == 0)
             kolejnePytanie(kolory);
-        else if (liczbaPytan % 3 == 1)
+        else if (liczba_los % 3 == 1)
             kolejnePytanie(odpowiedzi);
         else
             kolejnePytanie(ksztalty);
@@ -122,9 +131,9 @@ public class Play extends AppCompatActivity {
     /** generuje kolejne pytanie
      */
     public void kolejnePytanie(ArrayList<?> arrayList){
-        if(liczbaPytan%3==0)
+        if(liczba_los%3==0)
             generowaniePytanKolor();
-        else if(liczbaPytan%3==1)
+        else if(liczba_los%3==1)
             generowaniePytanMatma();
         else
             generowaniePytanKszalt();
@@ -151,7 +160,7 @@ public class Play extends AppCompatActivity {
         res = getResources();
         int brown=res.getColor(R.color.brown);
         if(ustawienia.stanSwitch2) {
-            kolorki[0]="BRAZOWY";
+            kolorki[0]="BRĄZOWY";
             przycisk0.setBackgroundColor(brown);
         }
         zagrajPonownie(findViewById(R.id.button6));

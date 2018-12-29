@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          super.onOptionsItemSelected(item);
         switch (item.getItemId()){
             case R.id.zasady:
-                Intent intent7 = new Intent(this, KoloryLosowe.class);
+                Intent intent7 = new Intent(this, zasady_gry.class);
                 startActivity(intent7);
                 return true;
             case R.id.ustawienia:
@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent1);
                 break;
             case R.id.button4:
-                //wyjdz button
+                finish();
+                moveTaskToBack(true);
                 break;
             default:
                 break;
