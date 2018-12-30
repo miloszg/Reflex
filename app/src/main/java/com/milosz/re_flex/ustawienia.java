@@ -63,17 +63,17 @@ public class ustawienia extends AppCompatActivity {
     public void wylaczDzwiek()
     {
         if(stanSwitch1) {
-            Toast.makeText(this, "MUZYKA WYLACZONA: "+stanSwitch1, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "MUZYKA WYLACZONA", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(this, "MUZYKA WYLACZONA: "+stanSwitch1, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "MUZYKA WYLACZONA", Toast.LENGTH_SHORT).show();
         }
     }/** Zmienia kolory w mini-grach tak aby byly widoczne dala osob cierpiacych na daltonizm.
      */
     public void trybDaltonistow(){
         if(stanSwitch2) {
-            Toast.makeText(this, "TRYB DLA DALTONISTOW WLACZONY: "+stanSwitch2, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "TRYB DLA DALTONISTOW WLACZONY", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(this, "TRYB DLA DALTONISTOW WYLACZONY: "+stanSwitch2, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "TRYB DLA DALTONISTOW WYLACZONY", Toast.LENGTH_SHORT).show();
         }
     }
 
